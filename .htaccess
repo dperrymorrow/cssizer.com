@@ -1,0 +1,26 @@
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+	RewriteEngine On
+    RewriteBase /
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ /index.php?/$1 [L]
+    
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 /index.php
+</IfModule>
+
+IndexIgnore *
+
+### php settings
+php_value upload_max_filesize 50M
+php_value post_max_size 50M
+php_value max_input_time -1
+php_value memory_limit 100M
+
+## leave this on php will handle errors based on your environment settings
+php_flag display_errors on

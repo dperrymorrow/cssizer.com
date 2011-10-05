@@ -1,0 +1,104 @@
+
+/* 
+//////////////////////////////////
+GRIDS 
+////////////////////////////
+*/
+
+.colContainer{
+	display:block;
+	overflow:hidden;
+	clear:both;
+}
+
+
+.colContainer .center{
+	text-align:center;
+}
+
+.per5,.per10,.per33,.per15,.per20,.per25,.per30,.per35,.per40,.per45,.per50,.per55,.per60,.per65,.per70,.per75,.per80,.per85,.per90.per95,.per100{
+	display:inline;
+	width:50%;
+	float:left;
+	overflow:visible;
+}
+
+.scroll{overflow:auto;}
+.hidden{overflow:hidden;}
+.colContainer .padHeight{padding-top:4px;}
+.clear{clear: both;}
+.per5{width:5%;}
+.per10{width:10%;}
+.per15{width:15%;}
+.per20{width:20%;}
+.per25{width:25%;}
+.per30{width:30%;}
+.per33{width:33%;}
+.per35{width:35%;}
+.per40{width:40%;}
+.per45{width:45%;}
+.per50{width:50%;}
+.per55{width:55%;}
+.per60{width:60%;}
+.per65{width:65%;}
+.per70{width:70%;}
+.per75{width:75%;}
+.per80{width:80%;}
+.per85{width:85%;}
+.per90{width:90%;}
+.per95{width:95%;}
+.per100{width:100%;}
+
+.inline{
+	display:inline-block;
+	float:left;
+}
+
+
+/*
+////////////////////// 
+extra classes to add shadow and rounded ect... 
+//////////////////////
+*/
+
+.shadow{
+	-webkit-box-shadow: 0px 0px 6px #444;
+	-moz-box-shadow: 0px 0px 6px #444;
+	-khtml-box-shadow: 0px 0px 6px #444;
+}
+
+.roundedAll{
+	-moz-border-radius: 3px; 
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.autoHeight{
+	height:auto;
+}
+
+.fullHeight{
+	height:100%;
+}
+
+.roundedAllDouble{
+	-moz-border-radius: 6px; 
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+
+.roundedAllSmall{
+	-moz-border-radius: 3px; 
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.roundedTop { 
+	-moz-border-radius-bottomleft: 3px; 
+	-webkit-border-bottom-left-radius: 3px; 
+	border-bottom-left-radius: 3px; 
+	-moz-border-radius-bottomright: 3px; 
+	-webkit-border-bottom-right-radius: 3px; 
+	border-bottom-right-radius: 3px; 
+}
