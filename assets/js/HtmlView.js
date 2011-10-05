@@ -44,9 +44,9 @@ HtmlView.codeChange = function( obj ){
 
 	if( styles != this.cssCode ){
 		this.cssDirty = true;
-		console.log( 'dirty')
+		//console.log( 'dirty')
 	}else{
-		console.log('clean')
+		//console.log('clean')
 		this.cssDirty = false;
 	}
 
