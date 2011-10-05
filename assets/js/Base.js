@@ -19,7 +19,7 @@ Base.formattedHtml = '';
 Base.css_editor = null;
 Base.html_editor = null;
 
-Base.requiredJs = [	'/assets/js/lib/jquery-1.5.1.min.js',
+Base.requiredJs = [	
 					'/assets/js/lib/jquery-ui-1.8.11.custom.min.js',
 					'/assets/js/lib/topZIndex.js',
 					'/assets/js/lib/Callbacks.js',
@@ -28,7 +28,7 @@ Base.requiredJs = [	'/assets/js/lib/jquery-1.5.1.min.js',
 					'/assets/js/Selector.js',
 					'/assets/js/Navigation.js',
 					'/assets/components/CodeMirror-2.0/lib/codemirror.js',
-				    '/assets/components/CodeMirror-2.0/mode/css/css.js',
+				   '/assets/components/CodeMirror-2.0/mode/css/css.js',
 					'/assets/components/CodeMirror-2.0/mode/xml/xml.js'
 					];
 

@@ -32,7 +32,7 @@ define( 'ADMIN_KEY', 'vTrLwn7M8M' );
 |
 */
 
-
+define('VERSION','1.0');
 
 define('FOPEN_READ',							'rb');
 define('FOPEN_READ_WRITE',						'r+b');

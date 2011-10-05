@@ -12,7 +12,9 @@
 	<link rel="stylesheet" href="/assets/components/CodeMirror-2.0/mode/css/css.css">
 	<link rel="stylesheet" href="/assets/components/CodeMirror-2.0/mode/xml/xml.css">
 	<link rel="stylesheet" href="/assets/css/app.css" type="text/css" media="screen" title="no title" charset="utf-8">
-
+  
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="/assets/js/lib/LazyLoad.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/assets/js/Base.js" type="text/javascript" charset="utf-8"></script>
 
@@ -25,6 +27,7 @@
 
 </head>
 <body>
+  <a href="https://github.com/dperrymorrow/cssizer.com" class="github" target="new"></a>
 	<div id="resizeHandle"><img src="/assets/img/dragger.gif" id="dragIcon" width="10" height="30" alt="Dragger"></div>
 	<div id="preloader" class="roundedAll">Saving...</div>
 	<!-- css code and preview -->

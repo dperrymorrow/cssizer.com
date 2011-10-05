@@ -12,6 +12,7 @@
 		<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fcssizer.com%2Fbuild%2Fpreview%2F<?=$build['view_key']?>" target="_blank" id="htmlValidateTab">W3C Validate</a>
 		<a href="#" id="shareTab">Share</a>
 	<?endif;?>
+	<div id="versionNum">v<?= VERSION; ?></div>
 <!--
 <select id="themeSelector"> 
 	<option value="ace/theme/textmate">TextMate</option> 
