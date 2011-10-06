@@ -12,6 +12,16 @@
 		<a href="http://validator.w3.org/check?uri=http%3A%2F%2Fcssizer.com%2Fbuild%2Fpreview%2F<?=$build['view_key']?>" target="_blank" id="htmlValidateTab">W3C Validate</a>
 		<a href="#" id="shareTab">Share</a>
 	<?endif;?>
+	
+	<? if( !$this->tweet->logged_in() ): ?>
+	  <a href="/twitter" id="twitterLogIn">Login With Twitter</a>
+	<? 
+	else:
+	$user = $this->tweet->call('get', 'account/verify_credentials'); 
+	?>
+	  <a href="#" id="twitterUsername">@<?=  $user->screen_name ?></a>
+	<? endif ?>
+	
 	<div id="versionNum">v<?= VERSION; ?></div>
 <!--
 <select id="themeSelector"> 

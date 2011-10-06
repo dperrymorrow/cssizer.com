@@ -15,7 +15,9 @@ class Build extends MY_Controller {
 		$this->load->model( 'build_model' );
 		$this->load->helper( array( 'url', 'form', 'doctype', 'strip', 'security' ));
 		$this->load->library( array( 'security','docbuilder' ) );
+
 	}
+
 
 	function router()
 	{
