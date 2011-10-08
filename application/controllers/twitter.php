@@ -17,15 +17,14 @@
 			{
 				// You can get the tokens for the active logged in user:
 				$tokens = $this->tweet->get_tokens();
-				//$user = $this->tweet->call('get', 'account/verify_credentials');
+				$user = $this->tweet->call('get', 'account/verify_credentials');
+        redirect('/');
 			}
-			
-      // redirect('/');
 		}
 
     function index()
     {
-      
+      echo $this->tweet->logged_in();
     }
 		
 		function auth()

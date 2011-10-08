@@ -44,8 +44,52 @@ body{
 	-khtml-box-shadow: 0px 1px 1px #fff;
 }
 
+#linkHolder{
+	position:fixed;
+	left:50%;
+	top:-30px;
+
+	width:500px;
+	height:auto;
+
+	margin-left:-290px;
+	padding:40px;
+	padding-top:65px;
+
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	-khtml-box-shadow: 0px 0px 20px #000;
+
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+
+	z-index: 4;
+	display:none;
+	background-color: #f7f7f7;
+	background-image: -webkit-gradient(linear, left top, left bottom, to(#fff), from(#ebebeb));
+	background-image: -webkit-linear-gradient(top, #fff, #ebebeb);
+	background-image: -moz-linear-gradient(top, #fff, #ebebeb);
+	background-image: -o-linear-gradient(top, #fff, #ebebeb);
+	background-image: -ms-linear-gradient(top, #fff, #ebebeb);
+	background-image: linear-gradient(top, #ff, #ebebeb);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fff', EndColorStr='#ebebeb');
+
+	border:8px solid #dfdfdf;
+	border-top:none;
+
+}
 
 
+#linkHolder h2{
+	padding: 0px 0px 5px 0px;
+	margin: 0px 0px 10px 0px;
+	border-bottom:1px solid #dfdfdf;
+	color:#999;
+	font-size:24px;
+	text-shadow: 1px 1px 0px #fff;
+	letter-spacing:-0.06em;
+}
 
 
 #linkHolder label{
@@ -55,6 +99,7 @@ body{
 	width:120px;
 	display:inline-block;
 	text-align:right;
+	text-shadow: 1px 1px 0px #fff;
 }
 
 #linkHolder input[type=text]{
@@ -75,48 +120,20 @@ body{
 	height:20px;
 }
 
-#linkHolder{
-	position:fixed;
 
-	background-color:#fff;
-
-
-	left:50%;
-	top:-30px;
-
-	width:400px;
-	height:auto;
-
-	margin-left:-225px;
-	padding:50px;
-	padding-top:65px;
-
-	-webkit-box-shadow: 0px 0px 20px #888;
-	-moz-box-shadow: 0px 0px 20px #888;
-	-khtml-box-shadow: 0px 0px 20px #888;
-
-	-moz-border-radius: 10px; 
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
-
-	z-index: 4;
-
-	display:none;
-
-}
 
 
 #modal{
-	background-color:white;
+	background-color:black;
 	position:fixed;
 	width:100%;
 	height:100%;
 	top:0;
 	left:0;
-	-khtml-opacity: .5;  
-	-moz-opacity: .5;
-	opacity: .5;  
-	filter: alpha(opacity=50);  
+	-khtml-opacity: .6;  
+	-moz-opacity: .6;
+	opacity: .6;  
+	filter: alpha(opacity=60);  
 	display:none;
 }
 
@@ -148,7 +165,7 @@ body{
 	text-decoration:none;
 	text-align:center;
 
-
+float:left;
 	margin-top:7px;
 	display:inline-block;
 
@@ -174,6 +191,7 @@ body{
 	color: #999;
 	background: #f6f6f6;
 	letter-spacing:-0.06em;
+	margin-right:4px;
 }
 
 .cssizer_tabs a#htmlCodeTab{
@@ -182,7 +200,7 @@ body{
 
 .cssizer_tabs a#htmlCodeTab,
 .cssizer_tabs a#cssCodeTab{
-	padding-bottom:10px;
+	padding-bottom:3px;
 	line-height:25px;
 
 	-webkit-box-shadow: none;
@@ -190,6 +208,15 @@ body{
 	box-shadow: none;
 
 	border:1px solid #e8e8e8;
+
+	-webkit-border-bottom-left-radius: 0px;
+	-webkit-border-bottom-right-radius: 0px;
+
+	-moz-border-radius-bottomleft: 0px;
+	-moz-border-radius-bottomright: 0px;
+
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
 
 }
 
@@ -270,10 +297,6 @@ body{
 	color:#e4efff;
 }
 
-
-
-
-
 #preloader{
 	position:fixed;
 	top:70px;
@@ -286,7 +309,7 @@ body{
 	font-size:14px;
 	display:none;
 	z-index: 6;
-
+	
 	background-color: #e3781f;
 	background-image: -webkit-gradient(linear, left top, left bottom, to(rgb(227, 120, 31)), from(rgb(197, 33, 21)));
 	background-image: -webkit-linear-gradient(top, rgb(227, 120, 31), rgb(197, 33, 21));
@@ -299,9 +322,6 @@ body{
 	-webkit-box-shadow: 0px 0px 10px #555;
 	-moz-box-shadow: 0px 0px 10px #555;
 	-khtml-box-shadow: 0px 0px 10px #555;
-
-
-
 }
 
 #htmlVisualContainer{
@@ -355,12 +375,18 @@ body{
 	font-weight:bold;
 }
 
+/*code mirror styles*/
 .CodeMirror{
 	top:0;
 	position:absolute;
 	width:100%;
 	height:auto;
 	max-height:100%;
+}
+
+.CodeMirror pre{
+	font-size:12px;
+	font-family:"Monaco",Arial,Verdana,sans-serif!important;
 }
 
 .activeSelector{
@@ -427,3 +453,70 @@ a.github {
 	letter-spacing:-0.05em;
 }
 
+
+/*twitter section*/
+
+#twitterBox{
+	display:inline-block;
+	float:right;
+	width:auto;
+	margin-right:190px;
+}
+
+#twitterBox #twitterLink{
+	border:2px solid #083647;
+	color:white;
+	
+	background-color: #99bdbd;
+	background-image: -webkit-gradient(linear, left top, left bottom, to(#99bdbd), from(#1487af));
+	background-image: -webkit-linear-gradient(top, #99bdbd, #1487af);
+	background-image: -moz-linear-gradient(top, #99bdbd, #1487af);
+	background-image: -o-linear-gradient(top, #99bdbd, #1487af);
+	background-image: -ms-linear-gradient(top, #99bdbd, #1487af);
+	background-image: linear-gradient(top, #99bdbd, #1487af);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#99bdbd', EndColorStr='#1487af');
+
+}
+
+#twitterBuilds{
+	display:block;
+	overflow:hidden;
+	max-height:400px;
+	overflow-y:auto;
+}
+
+#twitterBuilds .twitterBuild{
+	display:block;
+	overflow:hidden;
+	background-color:#efefef;
+	padding:3px;
+	margin-bottom:1px;
+	font-size:12px;
+	text-shadow: 1px 1px 0px #fff;
+}
+
+#twitterBuilds .twitterBuild:nth-child(odd){
+	background-color:#dfdfdf;
+}
+
+#twitterBuilds .twitterBuild a{
+	color:#091e53;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+#twitterBuilds .twitterBuild a:hover{
+	text-decoration:underline;
+}
+
+#twitterBox #twitterLink:hover{
+	color:#e8ffff;
+}
+
+#twitterBox img{
+	display:inline-block;
+	float:left;
+	width:30px;
+	height:auto;
+	margin: 3px 8px 0px 0px;
+}

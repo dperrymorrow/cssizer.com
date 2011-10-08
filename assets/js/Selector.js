@@ -16,7 +16,6 @@ var Selector = function(){
 	
 	this.highlight = function(obj){
 		
-
 		if( !$( '#htmlVisualContainer' ).is( ':visible' ) ){
 			return;
 		}
@@ -65,12 +64,8 @@ var Selector = function(){
 					left += offsetLeft;
 				}
 				
-				var height = $(this).height() + 
-							parseInt($(this).css('padding-top')) + 
-							parseInt($(this).css('padding-bottom'));
-							
+				var height = $(this).height() + parseInt($(this).css('padding-top')) + parseInt($(this).css('padding-bottom'));			
 				var width = $(this).width() + parseInt($(this).css('padding-right')) + parseInt($(this).css('padding-left'));
-				
 				
 				loc.container.append( highlight );
 				highlight.css( 'left', left + 'px' ).css( 'top', top + 'px' ).width( width ).height( height );
@@ -86,7 +81,6 @@ var Selector = function(){
 	}
 
 	this.cleanLine = function( str ){
-
 		var val = str.replace( '{', '' );
 		val = val.trim();
 		return val;
@@ -94,5 +88,4 @@ var Selector = function(){
 	
 	this.build();
 
-	
 }

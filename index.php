@@ -19,17 +19,18 @@
  *
  */
 
-switch ( $_SERVER[ 'HTTP_HOST' ] ) {
-	case 'cssizer.local:8888':
-		define('ENVIRONMENT', 'development');
-		break;
-	
-	default:
-		define('ENVIRONMENT', 'production');
-		break;
+switch ( $_SERVER[ 'HTTP_HOST' ] ) 
+{
+  case 'cssizer.local:8888':
+  define('ENVIRONMENT', 'development');
+  break;
+
+  default:
+  define('ENVIRONMENT', 'production');
+  break;
 }
 
-	
+
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

@@ -33,10 +33,14 @@ class Build extends MY_Controller {
 			}
 			else
 			{
+        
 
+      
+        
 				//		trace( $this->build, true  );
 
 				$data[ 'build' ] = $this->build;
+				$data = $this->_get_twitter_info($data);
 				$this->build_model->update_views( $data[ 'build' ] );
 				$this->load->view( 'cssizer.php', $data );
 			}
@@ -52,7 +56,7 @@ class Build extends MY_Controller {
 
 		$data[ 'build' ] = $this->build_model->get_by_field_value( 'default', TRUE );
 		$data[ 'build' ][ 'mode' ] = 'view';
-
+    $data = $this->_get_twitter_info($data);
 		//	trace( $data, true  );
 
 		$this->load->view( 'cssizer', $data );
@@ -151,6 +155,28 @@ class Build extends MY_Controller {
 			$this->render_html( $build );
 		}
 
+	}
+	
+	
+	protected function _get_twitter_info($obj)
+	{
+	  if ( $this->tweet->logged_in() )
+      {
+        $tokens = $this->tweet->get_tokens();
+        $user = $this->tweet->call('get', 'account/verify_credentials');
+        
+        $q = $this->db->where( 'twitter_id_str', $user->id_str )->order_by('modified','ASC')->get( 'builds' );
+        $obj['users_builds'] = $q->result_array();
+        
+        $obj['twitter_screen_name'] = $user->screen_name;
+        $obj['twitter_id_str'] = $user->id_str;
+        $obj['twitter_profile_image_url'] = $user->profile_image_url;
+        return $obj;
+      }
+      else
+      {
+        return $obj;
+      }
 	}
 
 }

@@ -13,14 +13,19 @@
 		<a href="#" id="shareTab">Share</a>
 	<?endif;?>
 	
-	<? if( !$this->tweet->logged_in() ): ?>
-	  <a href="/twitter" id="twitterLogIn">Login With Twitter</a>
-	<? 
-	else:
-	$user = $this->tweet->call('get', 'account/verify_credentials'); 
-	?>
-	  <a href="#" id="twitterUsername">@<?=  $user->screen_name ?></a>
-	<? endif ?>
+	<div id="twitterBox">
+
+  	<? if( !isset($twitter_profile_image_url) ): ?>
+  	
+  	  <a href="/twitter" id="twitterLink">Login With Twitter</a>
+  	  
+  	<?else:?>
+
+  	  <img class="twitterIcon" src="<?= $twitter_profile_image_url ?>" />
+  	  <a href="#" id="twitterLink" class="showBuilds">@<?= $twitter_screen_name ?>&#x27;s builds</a>
+	
+	  <? endif ?>
+	</div>
 	
 	<div id="versionNum">v<?= VERSION; ?></div>
 <!--
@@ -32,5 +37,5 @@
 	<option value="ace/theme/pastel_on_dark">Pastel on dark</option> 
 	<option value="ace/theme/twilight">Twilight</option> 
 </select>
-</div>
 -->
+</div>
