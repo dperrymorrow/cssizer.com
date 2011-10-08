@@ -28,6 +28,8 @@ class Build_model extends MY_Model {
     }
 
     $data[ 'created' ] = time();
+    $data[ 'modified' ] = time();
+    $data[ 'last_viewed' ] = time();
     $data[ 'view_key' ] = random_string( 'alpha' );
     $data[ 'edit_key' ] = random_string( 'alpha' );
     return $data;
@@ -53,6 +55,30 @@ class Build_model extends MY_Model {
     $row = parent::get_by_id( $data[ 'id' ] );
     $data[ 'edits' ] = $row[ 'edits' ] + 1;
     return $data;
+  }
+
+  function update_name( $data )
+  {
+    // GOTTA MAKE SURE THAT THE TWITTER SESSION MATCHES THE TWITTER FOR THE BUILD
+    $build = $this->get_by_id( $data['id']);
+    if( empty($build) ){
+      return FALSE;
+    }
+    
+    if( !$this->tweet->logged_in() ){
+      return FALSE;
+    }else{
+      
+      $tokens = $this->tweet->get_tokens();
+      $user = $this->tweet->call('get', 'account/verify_credentials');
+      
+      if( $user->id_str != $build['twitter_id_str']){
+        return FALSE;
+      }else{
+        $this->update( $data );
+        return TRUE;
+      }
+    }
   }
 
   function update_views( $row )

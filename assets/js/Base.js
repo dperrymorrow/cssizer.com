@@ -23,6 +23,7 @@ Base.requiredJs = [
 					'/assets/js/lib/jquery-ui-1.8.11.custom.min.js',
 					'/assets/js/lib/topZIndex.js',
 					'/assets/js/lib/Callbacks.js',
+					'/assets/js/TwitterBuild.js',
 					'/assets/js/HtmlView.js',
 					'/assets/js/Iframe.js',
 					'/assets/js/Selector.js',
@@ -72,7 +73,10 @@ Base.run = function(){
 			
 	});
 	
-	
+	// instantiate all the twitter builds
+	$('.twitterBuild').each(function(){
+		new TwitterBuild( $(this) );
+	});
 	
 	$( 'input', '#linkHolder').click( function(){
 		this.select();
@@ -120,9 +124,11 @@ Base.setupCodeBlocks = function(){
 		lineNumbers: true,
 		electricChars:true,
 		matchBrackets:true,
-		indentUnit:1,
+		indentUnit:2,
+		indentWithTabs:false,
+		tabMode:"shift",
 		mode:'css',
-		
+		// lets proxy this its messy
 		onCursorActivity:function(){
 			Base.css_editor.setLineClass( Base.cssLine, null);
 		    Base.cssLine = Base.css_editor.setLineClass(Base.css_editor.getCursor().line, "activeline");
@@ -136,7 +142,9 @@ Base.setupCodeBlocks = function(){
 		electricChars:true,
 		matchBrackets:true,
 		htmlMode:true,
-		indentUnit:1,
+		indentUnit:2,
+		indentWithTabs:false,
+		tabMode:"shift",
 		mode:'xml',	
 		
 		onCursorActivity:function(){

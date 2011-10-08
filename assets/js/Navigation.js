@@ -40,7 +40,7 @@ var Navigation = function(){
 
 	this.showTwitterBuilds = function(){
 
-		$('#twitterBuilds').show();
+		$('#twitterLinks').show();
 		$('#shareLinks').hide();
 
 		this.showModal();
@@ -48,16 +48,19 @@ var Navigation = function(){
 	}
 
 	this.showModal = function(){
-		$( '#modal' ).topZIndex().show().click( function(){
-			$( this ).hide();
-			$( '#linkHolder' ).slideUp( 200 );
-		});
-		$( '#linkHolder' ).topZIndex().slideDown( 130 );
+		// have to toggle the overflow css setting to allow to show the close button.
+		$( '#modal,#closeOverlay' ).topZIndex().show().click( $.proxy(this,'hideModal'));
+		$( '#linkHolder' ).topZIndex().css('overflow','hidden').slideDown( 130, function(){ $(this).css('overflow','visible'); } );
+	}
+
+	this.hideModal=function(){
+		$( '#modal' ).hide();
+		$( '#linkHolder' ).css('overflow','hidden').slideUp( 200 );
 	}
 
 	this.showShare = function(){
 
-		$('#twitterBuilds').hide();
+		$('#twitterLinks').hide();
 		$('#shareLinks').show();
 
 		this.showModal();

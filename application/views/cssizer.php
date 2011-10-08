@@ -13,8 +13,10 @@
 	<link rel="stylesheet" href="/assets/components/CodeMirror-2.0/mode/xml/xml.css">
 	<link rel="stylesheet" href="/assets/css/app.css" type="text/css" media="screen" title="no title" charset="utf-8">
   
-  
+  <script src="/assets/js/lib/jquery-1.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <!--
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  -->
 	<script src="/assets/js/lib/LazyLoad.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/assets/js/Base.js" type="text/javascript" charset="utf-8"></script>
 

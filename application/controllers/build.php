@@ -13,11 +13,11 @@ class Build extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->model( 'build_model' );
-		$this->load->helper( array( 'url', 'form', 'doctype', 'strip', 'security' ));
+		$this->load->helper( array( 'url', 'form', 'doctype', 'strip', 'security', 'date' ));
 		$this->load->library( array( 'security','docbuilder' ) );
 
 	}
-
+  
 
 	function router()
 	{
@@ -33,12 +33,6 @@ class Build extends MY_Controller {
 			}
 			else
 			{
-        
-
-      
-        
-				//		trace( $this->build, true  );
-
 				$data[ 'build' ] = $this->build;
 				$data = $this->_get_twitter_info($data);
 				$this->build_model->update_views( $data[ 'build' ] );
@@ -62,7 +56,13 @@ class Build extends MY_Controller {
 		$this->load->view( 'cssizer', $data );
 	}
 
-
+  
+  function update_name()
+  {
+    $success = $this->build_model->update_name($_POST);
+    echo json_encode(array('success'=>$success));
+    exit;
+  }
 
 
 	function insert()
@@ -165,7 +165,7 @@ class Build extends MY_Controller {
         $tokens = $this->tweet->get_tokens();
         $user = $this->tweet->call('get', 'account/verify_credentials');
         
-        $q = $this->db->where( 'twitter_id_str', $user->id_str )->order_by('modified','ASC')->get( 'builds' );
+        $q = $this->db->where( 'twitter_id_str', $user->id_str )->order_by('modified','DESC')->get( 'builds' );
         $obj['users_builds'] = $q->result_array();
         
         $obj['twitter_screen_name'] = $user->screen_name;

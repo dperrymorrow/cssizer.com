@@ -31,8 +31,8 @@ define( 'ADMIN_KEY', 'vTrLwn7M8M' );
 | These modes are used when working with fopen()/popen()
 |
 */
-
-define('VERSION','1.0');
+define('PRODUCTION_DOMAIN','cssizer.com');
+define('VERSION','1.1');
 
 define('FOPEN_READ',							'rb');
 define('FOPEN_READ_WRITE',						'r+b');

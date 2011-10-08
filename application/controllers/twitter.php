@@ -5,7 +5,12 @@
 		function __construct()
 		{
 			parent::__construct();
-			// Enabling debug will show you any errors in the calls you're making, e.g:
+
+		}
+
+    function login()
+    {
+      // Enabling debug will show you any errors in the calls you're making, e.g:
 			$this->tweet->enable_debug(TRUE);
 			
 			if ( !$this->tweet->logged_in() )
@@ -20,11 +25,12 @@
 				$user = $this->tweet->call('get', 'account/verify_credentials');
         redirect('/');
 			}
-		}
-
-    function index()
+    }
+    
+    function logout()
     {
-      echo $this->tweet->logged_in();
+      $this->session->sess_destroy();
+      redirect('/');
     }
 		
 		function auth()
