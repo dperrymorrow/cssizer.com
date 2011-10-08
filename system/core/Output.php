@@ -33,19 +33,27 @@ class CI_Output {
 	protected $headers			= array();
 	protected $mime_types			= array();
 	protected $enable_profiler	= FALSE;
-	protected $parse_exec_vars	= TRUE;	// whether or not to parse variables like {elapsed_time} and {memory_usage}
-
 	protected $_zlib_oc			= FALSE;
 	protected $_profiler_sections = array();
+	protected $parse_exec_vars	= TRUE;	// whether or not to parse variables like {elapsed_time} and {memory_usage}
 
 	function __construct()
 	{
 		$this->_zlib_oc = @ini_get('zlib.output_compression');
 
 		// Get mime types for later
-		include APPPATH.'config/mimes'.EXT;
+		if (defined('ENVIRONMENT') AND file_exists(APPPATH.'config/'.ENVIRONMENT.'/mimes.php'))
+		{
+		    include APPPATH.'config/'.ENVIRONMENT.'/mimes.php';
+		}
+		else
+		{
+			include APPPATH.'config/mimes.php';
+		}
+
+
 		$this->mime_types = $mimes;
-		
+
 		log_message('debug', "Output Class Initialized");
 	}
 
@@ -78,7 +86,7 @@ class CI_Output {
 	function set_output($output)
 	{
 		$this->final_output = $output;
-		
+
 		return $this;
 	}
 
@@ -168,7 +176,7 @@ class CI_Output {
 		$header = 'Content-Type: '.$mime_type;
 
 		$this->headers[] = array($header, TRUE);
-		
+
 		return $this;
 	}
 

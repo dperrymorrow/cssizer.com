@@ -20,9 +20,13 @@
 				//$user = $this->tweet->call('get', 'account/verify_credentials');
 			}
 			
-			redirect('/');
+      // redirect('/');
 		}
 
+    function index()
+    {
+      
+    }
 		
 		function auth()
 		{
