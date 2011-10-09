@@ -7,8 +7,11 @@
 	<!-- VALIDATE AND SHARE LINKS -->
 	<? if( $build[ 'default' ] != TRUE and $build[ 'mode' ] == 'edit' ): ?>
 		<a href="http://validator.w3.org/check?uri=http%3A%2F%2F<?= PRODUCTION_DOMAIN ?>%2Fbuild%2Fpreview%2F<?=$build['view_key']?>" target="_blank" id="htmlValidateTab"  class="buttonLink">W3C Validate</a>
-		<a href="#" id="shareTab" class="buttonLink">Share</a>
-	<? endif ?>
+		<a href="#" id="shareTab" class="buttonLink blueButton">Share</a>
+	<? else: ?>
+    <!-- <a href="#" id="crawlLink" class="buttonLink blueButton">Crawl a Url</a> -->
+	<?endif?>
+	
 	
 	<!-- TWITTER BUILDS IF LOGGED IN / LOGIN LINK IF NOT -->
 	<div id="twitterBox">

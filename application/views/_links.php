@@ -32,7 +32,7 @@
       <div id="twitterBuilds">
         <? if ( isset($twitter_screen_name )): ?>
           <? foreach ($users_builds as $u_build ): ?>
-            <div class="twitterBuild">
+            <div class="twitterBuild" class="<?= is_current_build($u_build['edit_key'])?>">
               <div class="per15">
                 <a href="/<?= $u_build['edit_key'] ?>"><?= $u_build['edit_key'] ?></a>
               </div>
@@ -58,7 +58,19 @@
       </div>
       <a href="/twitter/logout" class="buttonLink twitterLink" id="logout">Logout of Twitter</a>
     </div>
+    
+    <!-- THE CRAWLER -->
+    <div id="crawler">
+      <h2>Create a Build from URL <em>(Experimental)</em></h2>
+      <form method="POST" action="/build/crawl">
+        <label>http://</label>
+        <input type="text" name="url" value="" />
+        <input type="submit" name="submit" value="Crawl Url" />
+      </form>
+    </div>
     <!-- THE CLOSE WINDOW BUTTON -->
     <div id="closeOverlay">x</div>
   </div>
 </div>
+
+

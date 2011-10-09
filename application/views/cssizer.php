@@ -38,18 +38,12 @@ $this->load->view( '_links' );
 $this->load->view( '_nav' ); 
 ?>
 
-
-
-
-
 <div id="htmlEditor">
 	<!-- html code and preview -->
 	<div id="docSelect">
 	<?= form_dropdown('doctype', doctype_labels(), $build['doctype'], 'id="docType"' ) ?>
 	</div>
-	
 	<textarea id="htmlCode"><?= $build['html'] ?></textarea>
-	
 </div>
 
 <div id="cssEditor">

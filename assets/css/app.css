@@ -131,6 +131,7 @@ body{
 	font-size:28px;
 	text-shadow: 1px 1px 0px #fff;
 	letter-spacing:-0.06em;
+	text-transform:capitalize;
 }
 
 
@@ -224,28 +225,24 @@ a.buttonLink{
 
 	padding: 0px 15px 0px 15px;
 
-	-webkit-border-radius: .5em; 
-	-moz-border-radius: .5em;
-	border-radius: .5em;
-
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 
 	line-height:20px;
-
 	color: #555;
 	letter-spacing:-0.06em;
 	margin-right:4px;
 	
 	border:2px solid #dfdfdf;
-	
 	background-color: #ffffff;
-background-image: -webkit-gradient(linear, left top, left bottom, to(#ffffff), from(#d6d6d6));
-background-image: -webkit-linear-gradient(top, #ffffff, #d6d6d6);
-background-image: -moz-linear-gradient(top, #ffffff, #d6d6d6);
-background-image: -o-linear-gradient(top, #ffffff, #d6d6d6);
-background-image: -ms-linear-gradient(top, #ffffff, #d6d6d6);
-background-image: linear-gradient(top, #ffffff, #d6d6d6);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#d6d6d6');
-
+	background-image: -webkit-gradient(linear, left top, left bottom, to(#ffffff), from(#d6d6d6));
+	background-image: -webkit-linear-gradient(top, #ffffff, #d6d6d6);
+	background-image: -moz-linear-gradient(top, #ffffff, #d6d6d6);
+	background-image: -o-linear-gradient(top, #ffffff, #d6d6d6);
+	background-image: -ms-linear-gradient(top, #ffffff, #d6d6d6);
+	background-image: linear-gradient(top, #ffffff, #d6d6d6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#d6d6d6');
 }
 
 .cssizer_tabs a#htmlCodeTab{
@@ -271,7 +268,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndC
 
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-
 }
 
 .cssizer_tabs a#htmlCodeTab:hover,
@@ -324,16 +320,13 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndC
 	background-image: -ms-linear-gradient(top, rgb(133, 198, 126), rgb(42, 127, 47));
 	background-image: linear-gradient(top, rgb(133, 198, 126), rgb(42, 127, 47));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#85c67e', EndColorStr='#2a7f2f');
-
-
 }
 
 .cssizer_tabs a#htmlValidateTab:hover{
 	color:#e2ffe7;
 }
 
-
-.cssizer_tabs a#shareTab{
+.cssizer_tabs a.blueButton{
 	background-color: #9fc2ff;
 	background-image: -webkit-gradient(linear, left top, left bottom, to(rgb(159, 194, 255)), from(rgb(78, 142, 195)));
 	background-image: -webkit-linear-gradient(top, rgb(159, 194, 255), rgb(78, 142, 195));
@@ -440,7 +433,8 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndC
 
 .CodeMirror pre{
 	font-size:12px;
-	font-family:"Monaco",Arial,Verdana,sans-serif!important;
+	font-family:"Monaco",Arial,Verdana,sans-serif !important;
+	line-height:16px !important;
 }
 
 .activeSelector{
@@ -635,3 +629,4 @@ a.buttonLink.twitterLink{
 	height:auto;
 	margin: 3px 8px 0px 0px;
 }
+

@@ -13,7 +13,7 @@ class Build extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->model( 'build_model' );
-		$this->load->helper( array( 'url', 'form', 'doctype', 'strip', 'security', 'date' ));
+		$this->load->helper( array( 'url', 'form', 'doctype', 'strip', 'security', 'date', 'build' ));
 		$this->load->library( array( 'security','docbuilder' ) );
 
 	}
@@ -154,7 +154,19 @@ class Build extends MY_Controller {
 		{
 			$this->render_html( $build );
 		}
-
+	}
+	
+	function crawl()
+	{
+	  if( !empty($_POST['url']))
+	  {
+	    
+	    $data = crawl_url($_POST['url']);
+	    
+	    $this->build_model->insert( $data );
+		  $new_build = $this->build_model->data;
+		  redirect("/".$new_build['edit_key']);
+	  }
 	}
 	
 	

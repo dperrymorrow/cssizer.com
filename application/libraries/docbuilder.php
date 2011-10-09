@@ -20,7 +20,11 @@ class Docbuilder{
     $styles = '<style type="text/css" media="screen" id="cssizerStyles">'."\n".$build[ 'css' ]."\n</style>";
     $head_content = "\n$meta\n$styles\n";
     $doc_type = get_doctype( $build[ 'doctype' ] );
-
+    
+    
+    $build[ 'html' ] = str_replace( '<script', "<!-- inline scripts strongly discouraged\n<script", $build['html'] );
+    $build[ 'html' ] = str_replace( '</script>', "</script>\n-->", $build['html'] );
+    
     // make sure they dont have a space
     $build[ 'html' ] = str_replace( '</ ', '</', $build[ 'html' ] );
 

@@ -6,6 +6,7 @@ var Navigation = function(){
 
 		$( '#shareTab').click( $.proxy(this,'showShare') );
 		$( '#twitterLink.showBuilds').click( $.proxy(this,'showTwitterBuilds') );
+		$( '#crawlLink').click( $.proxy(this,'showCrawl') );
 
 		$( '#htmlCodeTab' ).click( function(){
 			$( this ).parent().find( 'a' ).removeClass( 'active' );
@@ -35,6 +36,15 @@ var Navigation = function(){
 			return false;
 		});
 
+	}
+	
+	this.showCrawl = function(){
+
+		$('#crawler').show();
+		$('#shareLinks,#twitterLinks').hide();
+
+		this.showModal();
+		return false;
 	}
 
 
