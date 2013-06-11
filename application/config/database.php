@@ -58,10 +58,12 @@ $db['development']['autoinit'] = TRUE;
 $db['development']['stricton'] = FALSE;
 
 
-$db['production']['hostname'] = 'XXXX';
-$db['production']['username'] = 'XXXX';
-$db['production']['password'] = 'XXXX';
-$db['production']['database'] = 'XXXX';
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$db['production']['hostname'] = $url["host"];
+$db['production']['username'] = $url["user"];
+$db['production']['password'] = $url["pass"];
+$db['production']['database'] = substr($url["path"],1);
 $db['production']['dbdriver'] = 'mysql';
 $db['production']['dbprefix'] = '';
 $db['production']['pconnect'] = TRUE;
