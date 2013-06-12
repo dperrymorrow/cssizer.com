@@ -86,7 +86,7 @@ HtmlView.update = function( obj ){
 
 				data: {
 					css: styles,
-					csrf_token_name: $("input[name=csrf_token_name]").val(),
+					csrf_token_name: $("input[name=CSSIZER]").val(),
 					html: html,
 					doctype: $( '#docType' ).val(),
 					edit_key: Base.editKey
@@ -114,7 +114,7 @@ HtmlView.update = function( obj ){
 				type: 'POST',
 				url: '/build/insert',
 				data: {
-					csrf_token_name: $("input[name=csrf_token_name]").val(),
+					csrf_token_name: $("input[name=CSSIZER]").val(),
 					doctype: $( '#docType' ).val(),
 					css: styles,
 					html: html
