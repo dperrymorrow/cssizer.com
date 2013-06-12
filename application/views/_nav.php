@@ -16,7 +16,7 @@
 
 	<!-- TWITTER BUILDS IF LOGGED IN / LOGIN LINK IF NOT -->
 	<div id="twitterBox">
-  	<? if( !isset($twitter_profile_image_url) ): ?>
+  	<? if( !isset($twitter_screen_name) ): ?>
   	  <!-- NOT LOGGED INTO TWITTER -->
   	  <a href="/twitter/login" id="twitterLink" class="buttonLink twitterLink">Login With Twitter</a>
   	<? else: ?>
