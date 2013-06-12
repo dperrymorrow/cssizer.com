@@ -11,8 +11,8 @@
 	<? else: ?>
     <!-- <a href="#" id="crawlLink" class="buttonLink blueButton">Crawl a Url</a> -->
 	<?endif?>
-	
-	
+
+	<?= form_open("build/insert"); ?>
 	<!-- TWITTER BUILDS IF LOGGED IN / LOGIN LINK IF NOT -->
 	<div id="twitterBox">
   	<? if( !isset($twitter_profile_image_url) ): ?>

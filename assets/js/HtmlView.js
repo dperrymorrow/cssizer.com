@@ -1,20 +1,15 @@
 var HtmlView = {};
-HtmlView.iframe = null;
-
-HtmlView.htmlDirty = false;
-HtmlView.cssDirty = false;
-
-HtmlView.cssCode = '';
-HtmlView.htmlCode = '';
-HtmlView.saveTab = null;
-
+HtmlView.iframe      = null;
+HtmlView.htmlDirty   = false;
+HtmlView.cssDirty    = false;
+HtmlView.cssCode     = '';
+HtmlView.htmlCode    = '';
+HtmlView.saveTab     = null;
 HtmlView.highlighter = null;
-
-
 
 HtmlView.build = function(){
 
-	this.iframe = $( '#htmlPreview')
+	this.iframe = $( '#htmlPreview');
 	Callbacks.addCallback( 'update_html_view', this, 'update' );
 
 	this.saveTab = $( '#htmlVisualTab' );
@@ -24,25 +19,21 @@ HtmlView.build = function(){
 		HtmlView.codeChange( null );
 		HtmlView.saveTab.html( 'Save Changes' ).addClass( 'unsaved' );
 	});
-
-
-}
+};
 
 HtmlView.codeChange = function( obj ){
-
-
 	var styles = Base.css_editor.getValue();
 	var html = Base.html_editor.getValue();
 
-	if( this.cssCode == '' ){
+	if( this.cssCode === '' ){
 		this.cssCode = styles;
 	}
 
-	if( this.htmlCode == ''){
+	if( this.htmlCode === '') {
 		this.htmlCode = html;
 	}
 
-	if( styles != this.cssCode ){
+	if( styles !== this.cssCode ) {
 		this.cssDirty = true;
 		//console.log( 'dirty')
 	}else{
@@ -69,7 +60,7 @@ HtmlView.codeChange = function( obj ){
 		$( '#cssValidateTab,#shareTab,#htmlValidateTab' ).show( 100 );
 		this.saveTab.hide( 200 );
 	}
-}
+};
 
 HtmlView.update = function( obj ){
 
@@ -87,16 +78,18 @@ HtmlView.update = function( obj ){
 		var styles = Base.css_editor.getValue();
 		var html = Base.html_editor.getValue();
 
-		if( Base.editKey != '' ){
+		if( Base.editKey !== '' ){
 
 			$.ajax({
 				type: 'POST',
 				url: '/build/update',
 
-				data: { css:styles,
-					html:html,
-					doctype:$( '#docType' ).val(),
-					edit_key:Base.editKey
+				data: {
+					css: styles,
+					csrf_token_name: $("input[name=csrf_token_name]").val(),
+					html: html,
+					doctype: $( '#docType' ).val(),
+					edit_key: Base.editKey
 				},
 
 				success: function( data ){
@@ -112,28 +105,24 @@ HtmlView.update = function( obj ){
 					loc.cssCode = json.css;
 
 					Base.css_editor.setValue( json.css );
-
 				},
 			});
 
-		}else{
+		} else {
 
 			$.ajax({
 				type: 'POST',
 				url: '/build/insert',
-				data: { 
-					doctype:$( '#docType' ).val(),
-					css:styles,
-					html:html
+				data: {
+					csrf_token_name: $("input[name=csrf_token_name]").val(),
+					doctype: $( '#docType' ).val(),
+					css: styles,
+					html: html
 				},
 				success: function( key ){
 					window.location.href = "/" + key;
-				},
+				}
 			});
-
-
-
 		}
-
 	}
-}
+};
