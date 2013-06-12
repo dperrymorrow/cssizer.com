@@ -4,6 +4,7 @@
 	<a href="#" id="cssCodeTab" class="buttonLink">CSS {&nbsp;}</a>
 	<a href="#" id="htmlVisualTab" class="unsaved buttonLink">Save Changes</a>
 	<?= form_open("build/insert"); ?>
+  <?= form_close(); ?>
 
   <!-- VALIDATE AND SHARE LINKS -->
   <? if( $build[ 'default' ] != TRUE and $build[ 'mode' ] == 'edit' ): ?>

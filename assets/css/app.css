@@ -60,7 +60,7 @@ body{
 	-moz-box-shadow: 0px 0px 20px #000;
 	-khtml-box-shadow: 0px 0px 20px #000;
 
-	-moz-border-radius: 10px; 
+	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 
@@ -89,7 +89,7 @@ body{
 	z-index: 5;
 	margin-top:-5px;
 
-	-moz-border-radius: 18px; 
+	-moz-border-radius: 18px;
 	-webkit-border-radius: 18px;
 	border-radius: 18px;
 	border:2px solid #efefef;
@@ -154,15 +154,15 @@ body{
 	font-size:13px;
 	margin-left:5px;
 	border:1px solid #dfdfdf;
-	-moz-border-radius: 5px; 
+	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	color:#333;
 }
 
 #htmlPreview{
-	border:none; 
-	overflow:auto; 
+	border:none;
+	overflow:auto;
 	width:100%;
 	height:20px;
 }
@@ -177,10 +177,10 @@ body{
 	height:100%;
 	top:0;
 	left:0;
-	-khtml-opacity: .6;  
+	-khtml-opacity: .6;
 	-moz-opacity: .6;
-	opacity: .6;  
-	filter: alpha(opacity=60);  
+	opacity: .6;
+	filter: alpha(opacity=60);
 	display:none;
 }
 
@@ -225,7 +225,7 @@ a.buttonLink{
 
 	padding: 0px 15px 0px 15px;
 
-	-webkit-border-radius: 5px; 
+	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 
@@ -233,7 +233,7 @@ a.buttonLink{
 	color: #555;
 	letter-spacing:-0.06em;
 	margin-right:4px;
-	
+
 	border:2px solid #dfdfdf;
 	background-color: #ffffff;
 	background-image: -webkit-gradient(linear, left top, left bottom, to(#ffffff), from(#d6d6d6));
@@ -475,7 +475,7 @@ a.buttonLink{
 }
 
 
-a.github {
+/*a.github {
 	background-image: url(https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67);
 	background-position: 0 0;
 	background-repeat: no-repeat;
@@ -489,7 +489,7 @@ a.github {
 	top: -14px;
 	z-index: 1000;
 }
-
+*/
 #versionNum{
 	position:absolute;
 	top:0px;
@@ -588,11 +588,11 @@ a.buttonLink.twitterLink{
 
 
 #twitterLinks img.twitterIcon{
-	
+
 	position:absolute;
 	top:-20px;
 	right:0px;
-	-moz-border-radius: 5px; 
+	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 
@@ -601,7 +601,7 @@ a.buttonLink.twitterLink{
 		-webkit-box-shadow: inset 2px 2px 3px 0px #dfdfdf;
 	-moz-box-shadow: inset 2px 2px 3px 0px #dfdfdf;
 	box-shadow: inset 1px 1px 1px 1px #dfdfdf;
-	
+
 }
 
 #twitterBuilds .twitterBuild:nth-child(odd){

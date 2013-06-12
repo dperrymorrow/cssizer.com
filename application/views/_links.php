@@ -18,7 +18,7 @@
       	<input type="text" name="some_name" class="roundedAll" value="<?= site_url( 'build/preview/'.$build[ 'view_key']) ?>"/>
     	<? else: ?>
         <!-- THEY DONT HAVE THE RIGHTS TO SHARE THE BUILD, ITS DEFAULT, OR NOT THIERS -->
-        Make some changes then save. Then you will have your own version of this build and you can share your creation. 
+        Make some changes then save. Then you will have your own version of this build and you can share your creation.
       <? endif ?>
     </div>
     
@@ -42,11 +42,11 @@
               <div class="per15">
                 <?= $u_build['edits']?> edits
               </div>
-            
+
               <div class="per25">
                 <?= unix_to_human($u_build['modified']) ?>
               </div>
-            
+
               <div class="per25">
                 <div class="status">Saving...</div>
                 <input class="buildNameInput" type="text" name="name" data-id="<?=$u_build['id']?>" value="<?= htmlentities($u_build['name']) ?>" />
@@ -58,11 +58,11 @@
       </div>
       <a href="/twitter/logout" class="buttonLink twitterLink" id="logout">Logout of Twitter</a>
     </div>
-    
+
     <!-- THE CRAWLER -->
     <div id="crawler">
       <h2>Create a Build from URL <em>(Experimental)</em></h2>
-      <form method="POST" action="/build/crawl">
+      <?= form_open("build/crawl") ?>
         <label>http://</label>
         <input type="text" name="url" value="" />
         <input type="submit" name="submit" value="Crawl Url" />

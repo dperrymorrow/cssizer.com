@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/assets/components/CodeMirror-2.0/mode/css/css.css">
 	<link rel="stylesheet" href="/assets/components/CodeMirror-2.0/mode/xml/xml.css">
 	<link rel="stylesheet" href="/assets/css/app.css" type="text/css" media="screen" title="no title" charset="utf-8">
-  
+
   <script src="/assets/js/lib/jquery-1.5.1.min.js" type="text/javascript" charset="utf-8"></script>
   <!--
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -29,13 +29,13 @@
 
 </head>
 <body>
-  <a href="https://github.com/dperrymorrow/cssizer.com" class="github" target="new"></a>
+  <!-- <a href="https://github.com/dperrymorrow/cssizer.com" class="github" target="new"></a> -->
 	<div id="resizeHandle"><img src="/assets/img/dragger.gif" id="dragIcon" width="10" height="30" alt="Dragger"></div>
 	<div id="preloader" class="roundedAll">Saving...</div>
 	<!-- css code and preview -->
-<? 
-$this->load->view( '_links' ); 
-$this->load->view( '_nav' ); 
+<?
+$this->load->view( '_links' );
+$this->load->view( '_nav' );
 ?>
 
 <div id="htmlEditor">
@@ -58,9 +58,9 @@ $this->load->view( '_nav' );
 
 <script type="text/javascript" charset="utf-8">
 <? if( $build[ 'mode' ] == 'edit' ): ?>
-Base.init( "<?= $build[ 'edit_key'] ?>", "<?= $build[ 'view_key'] ?>", "<?= $build[ 'default' ] ?>", "<?= ENVIRONMENT ?>" )	
+Base.init( "<?= $build[ 'edit_key'] ?>", "<?= $build[ 'view_key'] ?>", "<?= $build[ 'default' ] ?>", "<?= ENVIRONMENT ?>" )
 <? else: ?>
-Base.init( "", "<?= $build[ 'view_key'] ?>", <?= $build[ 'default' ] ?>, "<?= ENVIRONMENT ?>" )	
+Base.init( "", "<?= $build[ 'view_key'] ?>", <?= $build[ 'default' ] ?>, "<?= ENVIRONMENT ?>" )
 <? endif; ?>
 </script>
 
