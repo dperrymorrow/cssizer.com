@@ -1,11 +1,11 @@
 <!-- css code and preview -->
 <div id="modal"></div>
   <div id="linkHolder">
-    
+
     <!-- LINKS TO SHARE THE BUILD -->
     <div id="shareLinks">
       <h2>Share Your Build</h2>
-      
+
       <!-- CHECK TO SEE IF HAVE RIGHTS TO SHARE THE BUILD -->
       <? if( $build[ 'default' ] != TRUE and $build[ 'mode' ] == 'edit' ): ?>
       	<label>Read/Write Url:</label>
@@ -21,10 +21,10 @@
         Make some changes then save. Then you will have your own version of this build and you can share your creation.
       <? endif ?>
     </div>
-    
+
     <!-- BUILDS ASSOCIATED WITH THE CURRENT LOGGED TWITTER ACCOUNT -->
     <div id="twitterLinks">
-      
+
       <? if ( isset($twitter_screen_name )): ?>
         <img class="twitterIcon" src="<?= $twitter_profile_image_url ?>" />
       <? endif ?>
@@ -60,14 +60,14 @@
     </div>
 
     <!-- THE CRAWLER -->
-    <div id="crawler">
+    <!-- <div id="crawler">
       <h2>Create a Build from URL <em>(Experimental)</em></h2>
       <?= form_open("build/crawl") ?>
         <label>http://</label>
         <input type="text" name="url" value="" />
         <input type="submit" name="submit" value="Crawl Url" />
       </form>
-    </div>
+    </div> -->
     <!-- THE CLOSE WINDOW BUTTON -->
     <div id="closeOverlay">x</div>
   </div>
