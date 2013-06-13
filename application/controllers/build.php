@@ -9,7 +9,7 @@ class Build extends MY_Controller {
 	public $build = array();
 
 	//php 5 constructor
-	function __construct() 
+	function __construct()
 	{
 		parent::__construct();
 		$this->load->model( 'build_model' );
@@ -17,7 +17,7 @@ class Build extends MY_Controller {
 		$this->load->library( array( 'security','docbuilder' ) );
 
 	}
-  
+
 
 	function router()
 	{
@@ -56,7 +56,7 @@ class Build extends MY_Controller {
 		$this->load->view( 'cssizer', $data );
 	}
 
-  
+
   function update_name()
   {
     $success = $this->build_model->update_name($_POST);
@@ -67,6 +67,7 @@ class Build extends MY_Controller {
 
 	function insert()
 	{
+		$_POST['ip'] = $this->input->ip_address();
 		$this->build_model->insert( $_POST );
 		$new_build = $this->build_model->data;
 		// shouldnt i just redirect?
@@ -102,7 +103,7 @@ class Build extends MY_Controller {
 	function clean( $edit_key )
 	{
 
-		$build = $this->build_model->find_by_key( $edit_key );	
+		$build = $this->build_model->find_by_key( $edit_key );
 
 		if ( extension_loaded('tidy') )
 		{
@@ -113,7 +114,7 @@ class Build extends MY_Controller {
 				'wrap'           	=> 0,
 				'tab-size'			=> 30,
 				'char-encoding'		=> 'utf8',
-				//'show-body-only' 	=> true, 
+				//'show-body-only' 	=> true,
 			'doctype'			=> tidy_doctype( $build[ 'doctype' ] )
 
 				);
@@ -155,31 +156,31 @@ class Build extends MY_Controller {
 			$this->render_html( $build );
 		}
 	}
-	
+
 	function crawl()
 	{
 	  if( !empty($_POST['url']))
 	  {
-	    
+
 	    $data = crawl_url($_POST['url']);
-	    
+
 	    $this->build_model->insert( $data );
 		  $new_build = $this->build_model->data;
 		  redirect("/".$new_build['edit_key']);
 	  }
 	}
-	
-	
+
+
 	protected function _get_twitter_info($obj)
 	{
 	  if ( $this->tweet->logged_in() )
       {
         $tokens = $this->tweet->get_tokens();
         $user = $this->tweet->call('get', 'account/verify_credentials');
-        
+
         $q = $this->db->where( 'twitter_id_str', $user->id_str )->order_by('modified','DESC')->get( 'builds' );
         $obj['users_builds'] = $q->result_array();
-        
+
         $obj['twitter_screen_name'] = $user->screen_name;
         $obj['twitter_id_str'] = $user->id_str;
         $obj['twitter_profile_image_url'] = $user->profile_image_url;
