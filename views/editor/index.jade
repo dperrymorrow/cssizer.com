@@ -1,0 +1,33 @@
+
+doctype html
+html
+  head
+    style.
+      body  {
+        background-color: #666;
+      }
+
+    body
+      header
+        h2= user.username
+        img(src=user._json.avatar_url, style="max-height:100px;")
+
+        hr
+        label css gists
+
+        select(name="gist")
+          - each gist in gists
+            option(value=gist.id)
+              = gist.description || Object.keys(gist.files)[0]
+      
+      .container
+
+        form(method="post", action= gist.id ? "/editor/update" : "/editor/create")
+          input#description(type="text", name="gist[description]", value=gist.descripton)
+          input(type="hidden", name="gist[id]", value=gist.id)
+          textarea#css(name="gist[css]")
+          textarea#html(name="gist[html]")
+
+          button(type="submit") Save
+
+        iframe(sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts", frameborder="no")
