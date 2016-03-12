@@ -2,32 +2,33 @@
 doctype html
 html
   head
-    style.
-      body  {
-        background-color: #666;
-      }
+    link(rel="stylesheet" href="/css/vendor.min.css" type="text/css" media="screen" charset="utf-8")
+    link(rel="stylesheet" href="/css/app.css" type="text/css" media="screen" charset="utf-8")
 
     body
       header
-        h2= user.username
-        img(src=user._json.avatar_url, style="max-height:100px;")
+        #user-info
 
-        hr
-        label css gists
+      .container.editor
+        form(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
+          input#description(type="text", name="description", value=gist.description, placeholder="description")
+          input(type="text", name="id", value=gist.id)
 
-        select(name="gist")
-          - each gist in gists
-            option(value=gist.id)
-              = gist.description || Object.keys(gist.files)[0]
-      
-      .container
+          //- might should do this on the server
+          - cssFile = _.findWhere(gist.files, {language: 'CSS'});
+          - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
 
-        form(method="post", action= gist.id ? "/editor/update" : "/editor/create")
-          input#description(type="text", name="gist[description]", value=gist.descripton)
-          input(type="hidden", name="gist[id]", value=gist.id)
-          textarea#css(name="gist[css]")
-          textarea#html(name="gist[html]")
+          input(type="hidden", name="files[CSS][filename]", value=cssFile.filename)
+          textarea(name="files[CSS][content]", class="CSS")= cssFile.content
+
+          input(type="hidden", name="files[HTML][filename]", value=htmlFile.filename)
+          textarea(name="files[HTML][content]", class="HTML")= htmlFile.content
 
           button(type="submit") Save
 
-        iframe(sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts", frameborder="no")
+        iframe#preview(sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts", frameborder="no")
+
+      script(src="/js/vendor.min.js")
+      script(src="/js/app.js")
+      script.
+        CSSIZER.editor.init();

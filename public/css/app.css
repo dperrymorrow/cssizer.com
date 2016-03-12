@@ -1,0 +1,37 @@
+body {
+  background-color: #888;
+  margin: 0;
+  padding: 0;
+}
+body header {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+body .editor {
+  width: 50%;
+  height: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+body .editor.css {
+  top: 0;
+  border-bottom: none;
+}
+body .editor.html {
+  top: 50%;
+}
+body .editor .source {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 50%;
+  font-family: Monaco;
+  font-size: 14px;
+  white-space: pre-wrap;
+}

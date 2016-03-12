@@ -21,8 +21,9 @@
   "bugs": {
     "url": "https://github.com/dperrymorrow/cssizer.com/issues"
   },
-  "homepage": "https://github.com/dperrymorrow/cssizer.com#readme",
+  "homepage": "http://cssizer.com",
   "dependencies": {
+    "async": "^1.5.2",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "express-partials": "^0.3.0",
@@ -34,8 +35,21 @@
     "npm": "^3.8.0",
     "passport": "^0.3.2",
     "passport-github2": "^0.1.10",
+    "prismjs": "^1.4.1",
     "q": "^1.4.1",
     "request": "^2.69.0",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "zepto": "^1.0.1",
+    "animate.css": "^3.5.1",
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.0.5",
+    "gulp-uglify": "^1.5.3",
+    "gulp-uglifycss": "^1.0.6",
+    "gulp-watch": "^4.3.5",
+    "normalize.css": "^3.0.3"
   }
 }

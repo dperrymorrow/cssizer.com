@@ -9,8 +9,8 @@ var express = require('express');
   gists = require('./lib/gists'),
   MongoStore = require('express-session-mongo'),
   GITHUB_CLIENT_ID = process.env.CSSIZER_CLIENT_ID,
-  GITHUB_CLIENT_SECRET = process.env.CSSIZER_CLIENT_SECRET;
-
+  GITHUB_CLIENT_SECRET = process.env.CSSIZER_CLIENT_SECRET,
+  CSSIZER_SESSION = process.env.CSSIZER_SESSION;
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -31,64 +31,86 @@ passport.use(new GitHubStrategy({
   }
 ));
 
-
 var app = express();
+app.locals._ = require("underscore");
 
 // configure Express
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-// app.use(partials());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(session({ 
-  store: new MongoStore(), 
-  secret: 'asdl324589709534lkladsfjlkasdf', 
-  resave: false, 
-  saveUninitialized: false 
+app.use(session({
+  store: new MongoStore(),
+  secret: CSSIZER_SESSION,
+  resave: false,
+  saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
-  var redir = req.isAuthenticated() ? '/editor' : '/login';
+  var redir = req.isAuthenticated() ? '/editor/new' : '/login';
   res.redirect(redir);
 });
 
-app.get('/editor', ensureAuthenticated, function(req, res){
-  gists.getGists(req.user).then(function (gists) {
-    res.render('editor/index', { user: req.user, gists: gists, gist: {} });
+// editor
+app.get('/editor/new', ensureAuthenticated, function(req, res){
+  res.render('editor/index', { user: req.user, gists: [], gist: gists.new() });
+});
+
+app.get('/editor/:id/edit', ensureAuthenticated, function (req, res) {
+  gists.find(req.params.id).then(function (gist) {
+    if (!gist) res.render('notFound');
+    res.render('editor/index', {gist: gist, gists: gists, user: req.user});
+  });
+});
+
+app.post('/editor/:id/update', ensureAuthenticated, function (req, res) {
+  gists.update(req.body).then(function (gist) {
+    res.redirect('/editor/' + req.body.id + '/edit');
   });
 });
 
 app.post('/editor/create', ensureAuthenticated, function(req, res){
-  console.log(req.body.gist);
-  gists.create(req.user, req.body.gist).then(function (gists) {
-    res.redirect('/editor');
+  gists.create(req.body).then(function (gist) {
+    res.redirect('/editor/' + gist.id + "/edit");
   });
 });
 
+// user info
+app.get('/user/show', ensureAuthenticated, function (req, res) {
+  gists.all().then(function (gists) {
+    res.render('user/show', {user: req.user, gists: gists});
+  });
+});
+
+// authorization
 app.get('/login', function (req, res) {
   res.render('login', { user: req.user });
 });
-
-app.get('/auth/github', passport.authenticate('github', {scope: ['user:email', 'gist']}));
-
-app.get('/auth/github/callback', 
-  passport.authenticate('github', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/editor');
-  });
 
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
 
-app.listen(3000);
+// github oauth routes
+app.get('/auth/github', passport.authenticate('github', {scope: ['user:email', 'gist']}));
+
+app.get('/auth/github/callback',
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/editor/new');
+  });
 
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) return next();
+  if (req.isAuthenticated()) {
+    gists.user = req.user;
+    return next();
+  }
   res.redirect('/login')
 }
+
+app.listen(3000);
