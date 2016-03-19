@@ -2,6 +2,7 @@
 var express = require('express');
   passport = require('passport'),
   session = require('express-session'),
+  expressLess = require('express-less'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
   GitHubStrategy = require('passport-github2').Strategy,
@@ -37,6 +38,7 @@ app.locals._ = require("underscore");
 // configure Express
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+app.use('/less-css', expressLess(__dirname + '/less', { debug: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
@@ -65,6 +67,10 @@ app.get('/editor/:id/edit', ensureAuthenticated, function (req, res) {
     if (!gist) res.render('notFound');
     res.render('editor/index', {gist: gist, gists: gists, user: req.user});
   });
+});
+
+app.get('/iframe', function (req, res) {
+  res.render('iframe');
 });
 
 app.post('/editor/:id/update', ensureAuthenticated, function (req, res) {

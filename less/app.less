@@ -1,0 +1,91 @@
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.container {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding-top: 50px;
+  box-sizing: border-box;
+  margin: 0;
+
+  #preview {
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    background-color: orange;
+
+    iframe {
+      background-color: lighten(#11242d, 2%);
+    }
+  }
+
+  #editor {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    background-color: pink;
+
+    .CodeMirror {
+      background-color: #11242d;
+    }
+
+    .source {
+      height: 50%;
+      position: relative;
+    }
+  }
+}
+
+.CodeMirror {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  font-family: Monaco;
+
+  &:nth-child(2n) {
+    // top: 50%;
+    // border-top: 2px solid #ccc;
+  }
+}
+
+@media (max-width: 750px) {
+  .container #editor, .container #preview {
+      display:block;
+      width: 100%;
+      height: 50%;
+    }
+
+  .container #editor {
+    .source {
+      width: 50%;
+      height: 100%;
+      display: inline-block;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .container #editor {
+    width: 40%;
+  }
+  .container #preview {
+    width: 60%;
+  }
+}

@@ -1,29 +1,22 @@
 
-
 var uglifycss = require('gulp-uglifycss');
-var gulp = require('gulp');
-var gulpLess = require('gulp-less');
-var gulpWatch = require('gulp-watch');
-var gulpBatch = require('gulp-batch');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var path = require('path');
-
-gulp.task('less', function () {
-  return gulp.src('./assets/less/**/*.less')
-    .pipe(gulpLess())
-    .pipe(gulp.dest('./public/css'));
-});
-
-gulp.task('watch', function () {
-  gulpWatch('./assets/less/**/*.less', gulpBatch(function (events, done) {
-    gulp.start('less', done);
-  }));
-});
+  gulp = require('gulp'),
+  gulpWatch = require('gulp-watch'),
+  gulpBatch = require('gulp-batch'),
+  gulpCopy = require('gulp-copy'),
+  uglify = require('gulp-uglify'),
+  concat = require('gulp-concat');
 
 gulp.task('vendorScripts', function () {
   return gulp.src([
-      './node_modules/zepto/zepto.min.js'
+      './node_modules/codemirror/lib/codemirror.js',
+      './node_modules/codemirror/keymap/sublime.js',
+      './node_modules/codemirror/mode/css/css.js',
+      './node_modules/codemirror/mode/xml/xml.js',
+      './node_modules/codemirror/mode/htmlmixed/htmlmixed.js',
+      './node_modules/underscore/underscore.js',
+      './node_modules/jquery/dist/jquery.min.js'
+      //'./node_modules/zepto/zepto.min.js'
     ])
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
@@ -32,12 +25,16 @@ gulp.task('vendorScripts', function () {
 
 gulp.task('vendorStyles', function () {
   return gulp.src([
-      './node_modules/normalize.css/normalize.css'
+      './node_modules/normalize.css/normalize.css',
+      './node_modules/animate.css/animate.css',
+      './node_modules/flexboxgrid/dist/flexboxgrid.css',
+      './node_modules/codemirror/lib/codemirror.css',
+      './node_modules/codemirror/theme/tomorrow-night-eighties.css'
     ])
     .pipe(concat('vendor.min.css'))
     .pipe(uglifycss())
     .pipe(gulp.dest('./public/css/'));
-})
+});
 
-gulp.task('build', ['less', 'vendorScripts', 'vendorStyles']);
+gulp.task('build', ['vendorScripts', 'vendorStyles']);
 gulp.task('default', ['build']);
