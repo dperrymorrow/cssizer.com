@@ -16,7 +16,7 @@
       matchBrackets:true,
       indentWithTabs:false,
       tabMode:"shift",
-      theme: "tomorrow-night-eighties"
+      theme: "cssizer"
     },
 
     init: function () {

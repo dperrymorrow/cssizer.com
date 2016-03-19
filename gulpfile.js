@@ -29,7 +29,7 @@ gulp.task('vendorStyles', function () {
       './node_modules/animate.css/animate.css',
       './node_modules/flexboxgrid/dist/flexboxgrid.css',
       './node_modules/codemirror/lib/codemirror.css',
-      './node_modules/codemirror/theme/tomorrow-night-eighties.css'
+      //'./node_modules/codemirror/theme/tomorrow-night-eighties.css'
     ])
     .pipe(concat('vendor.min.css'))
     .pipe(uglifycss())

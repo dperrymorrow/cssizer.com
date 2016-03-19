@@ -69,10 +69,6 @@ app.get('/editor/:id/edit', ensureAuthenticated, function (req, res) {
   });
 });
 
-app.get('/iframe', function (req, res) {
-  res.render('iframe');
-});
-
 app.post('/editor/:id/update', ensureAuthenticated, function (req, res) {
   gists.update(req.body).then(function (gist) {
     res.redirect('/editor/' + req.body.id + '/edit');
