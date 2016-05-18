@@ -53,6 +53,7 @@
     "gulp-uglifycss": "^1.0.6",
     "gulp-watch": "^4.3.5",
     "normalize.css": "^3.0.3",
+    "octicons": "^3.5.0",
     "zepto": "^1.0.1"
   }
 }

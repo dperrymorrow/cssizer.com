@@ -16,7 +16,6 @@ gulp.task('vendorScripts', function () {
       './node_modules/codemirror/mode/htmlmixed/htmlmixed.js',
       './node_modules/underscore/underscore.js',
       './node_modules/jquery/dist/jquery.min.js'
-      //'./node_modules/zepto/zepto.min.js'
     ])
     .pipe(concat('vendor.min.js'))
     .pipe(uglify())
@@ -27,9 +26,7 @@ gulp.task('vendorStyles', function () {
   return gulp.src([
       './node_modules/normalize.css/normalize.css',
       './node_modules/animate.css/animate.css',
-      './node_modules/flexboxgrid/dist/flexboxgrid.css',
-      './node_modules/codemirror/lib/codemirror.css',
-      //'./node_modules/codemirror/theme/tomorrow-night-eighties.css'
+      './node_modules/codemirror/lib/codemirror.css'
     ])
     .pipe(concat('vendor.min.css'))
     .pipe(uglifycss())

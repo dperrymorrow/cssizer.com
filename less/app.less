@@ -1,4 +1,4 @@
-@include 'theme.less';
+@import 'theme.less';
 
 html, body {
   height: 100%;
@@ -7,6 +7,13 @@ html, body {
 body {
   margin: 0;
   padding: 0;
+  overflow:hidden;
+
+  &.modal-open {
+    #modal {
+      display: flex;
+    }
+  }
 }
 
 header {
@@ -20,7 +27,7 @@ header {
   display: block;
   height: 100%;
   width: 100%;
-  padding-top: 50px;
+  // padding-top: 50px;
   box-sizing: border-box;
   margin: 0;
 
@@ -39,26 +46,51 @@ header {
     display: inline-block;
     width: 50%;
     height: 100%;
-    background-color: pink;
 
     .source {
       height: 50%;
       position: relative;
+
+      &:last-child {
+        border-top: 10px solid #333;
+      }
     }
   }
 }
 
-.CodeMirror {
+.CodeMirror-wrap {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  font-family: Monaco;
+  box-sizing: border-box;
+}
 
-  &:nth-child(2n) {
-    // top: 50%;
-    // border-top: 2px solid #ccc;
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 3;
+    align-items: center;
+  justify-content: center;
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+  }
+
+  .content {
+    z-index: 1;
+    max-width: 50%;
   }
 }
 

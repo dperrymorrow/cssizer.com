@@ -5,33 +5,33 @@ html
     link(rel="stylesheet" href="/css/vendor.min.css" type="text/css" media="screen" charset="utf-8")
     link(rel="stylesheet" href="/less-css/app.css" type="text/css" media="screen" charset="utf-8")
 
+    //- might should do this on the server
+    - cssFile = _.findWhere(gist.files, {language: 'CSS'});
+    - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
+
     body
       header
         #user-info
+        button#save-trigger Save
+
+      #modal
+        .backdrop
+        .content
+          form#save-form(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
+            input(type="hidden", name="files[CSS][filename]", value=cssFile.filename)
+            textarea(type="text", name="description", value=gist.description, placeholder="description")
+            input(type="hidden", name="files[HTML][filename]", value=htmlFile.filename)
+            input(type="hidden", name="id", value=gist.id)
+            input(type="hidden", name="files[CSS][content]")= cssFile.content
+            input(type="hidden", name="files[HTML][content]")= htmlFile.content
+            button(type="submit") Save
+
       .container
-
-
         #editor
-          //- .source.css(style="background-color:#666;")
-          //- .source.css(style="background-color:#777;")
-          //- form(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
-          //-   input#description(type="text", name="description", value=gist.description, placeholder="description")
-          //-   input(type="text", name="id", value=gist.id)
-
-          //-   //- might should do this on the server
-          - cssFile = _.findWhere(gist.files, {language: 'CSS'});
-          - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
-
-          //-   input(type="hidden", name="files[CSS][filename]", value=cssFile.filename)
           .source
-            textarea#css(name="files[CSS][content]", class="CSS")= cssFile.content
-
-          //-   input(type="hidden", name="files[HTML][filename]", value=htmlFile.filename)
+            textarea.CSS#css(name="files[CSS][content]")= cssFile.content
           .source
-            textarea#html(name="files[HTML][content]", class="HTML")= htmlFile.content
-
-          //-   button(type="submit") Save
-
+            textarea.HTML#html(name="files[HTML][content]")= htmlFile.content
 
         #preview
           //- sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts",
@@ -40,6 +40,8 @@ html
       script(src="/js/vendor.min.js")
       script(src="/js/editor.js")
       script(src="/js/preview.js")
+      script(src="/js/form.js")
       script.
         CSSIZER.preview.init();
         CSSIZER.editor.init();
+        CSSIZER.form.init();

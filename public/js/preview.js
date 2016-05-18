@@ -5,16 +5,17 @@
 
   CSSIZER.preview = {
 
+    $iframe: $("#preview iframe"),
+
     init: function () {
-      var $iframe = $("#preview iframe");
-      this.$htmlTarget = $iframe.contents().find('#html-target');
-      this.$cssTarget = $iframe.contents().find('#css-target');
+      this.$htmlTarget = this.$iframe.contents().find('#html-target');
+      this.$cssTarget = this.$iframe.contents().find('#css-target');
     },
 
     update: function (css, html) {
       this.$htmlTarget.html(html);
       this.$cssTarget.html(css);
     }
-  }
+  };
 
 }());

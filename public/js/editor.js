@@ -11,10 +11,9 @@
       tabSize: 2,
       lineWrapping: true,
       addModeClass: true,
-      lineNumbers: true,
-      electricChars:true,
-      matchBrackets:true,
-      indentWithTabs:false,
+      lineNumbers: false,
+      electricChars: true,
+      matchBrackets: true,
       tabMode:"shift",
       theme: "cssizer"
     },
@@ -40,11 +39,13 @@
       this.cssEditor.on('change', update);
       update();
     }
-  }
+  };
 
   function update() {
-    CSSIZER.preview.update(
-      CSSIZER.editor.cssEditor.getValue(), CSSIZER.editor.htmlEditor.getValue()
-    );
+    var css = CSSIZER.editor.cssEditor.getValue(),
+      html = CSSIZER.editor.htmlEditor.getValue();
+
+    CSSIZER.preview.update(css, html);
+    CSSIZER.form.update(css, html);
   }
 }());
