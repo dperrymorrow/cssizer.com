@@ -19,9 +19,9 @@
     },
 
     init: function () {
-      $.get('/user/show', function (response) {
-        $('#user-info').html(response);
-      });
+      // $.get('/user/show', function (response) {
+      //   $('#user-info').html(response);
+      // });
 
       var cssSettings = _.defaults({
         mode:'css'

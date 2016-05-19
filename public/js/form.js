@@ -25,7 +25,7 @@
   }
 
   function hideModal() {
-    $('#modal .content').anCss('bounceOutUp').anDone(function () {
+    $('#modal .content').anCss('bounceOutDown').anDone(function () {
       $('body').removeClass('modal-open');
     });
   }

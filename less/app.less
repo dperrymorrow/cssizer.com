@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'forms';
 @import 'modal';
+@import 'editor';
 @import "https://fonts.googleapis.com/css?family=Crete+Round";
 
 html, body {
@@ -18,6 +19,7 @@ body {
   margin: 0;
   padding: 0;
   overflow:hidden;
+  background-color: @bgBlue;
 }
 
 header {
@@ -27,99 +29,68 @@ header {
   z-index: 2;
 }
 
+
+#editor {
+  .flex-display();
+  .flex-direction(columns);
+  .flex-wrap(wrap);
+
+  width: 50%;
+  height: 100%;
+}
+
+#preview {
+  display: inline-block;
+  height: 100%;
+  width: 50%;
+  background-color: orange;
+
+  iframe {
+    background-color: lighten(#11242d, 2%);
+  }
+}
+
 .container {
   .trans();
-  display: block;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-
-  #preview {
-    display: inline-block;
-    height: 100%;
-    width: 50%;
-    background-color: orange;
-
-    iframe {
-      background-color: lighten(#11242d, 2%);
-    }
-  }
-
-  #editor {
-    display: inline-block;
-    width: 50%;
-    height: 100%;
-
-    .source {
-      height: 50%;
-      width: 100%;
-      position: relative;
-
-      &.fullscreen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 10;
-
-        .toggle {
-          .icon-screen-normal { display: inline-block; }
-          .icon-screen-full { display: none; }
-        }
-      }
-
-      .toggle {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        color: @blue;
-        font-size: 21px;
-        z-index: 3;
-        cursor: pointer;
-
-        &.icon-screen-normal {
-          display: none;
-        }
-      }
-
-      &:last-child {
-        // border-top: 10px solid #333;
-      }
-    }
-  }
-}
-
-.CodeMirror-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
+  .flex-display();
+  .flex-direction(row);
+  .flex-wrap(wrap);
   height: 100%;
   width: 100%;
 }
 
-@media (max-width: 750px) {
-  .container #editor, .container #preview {
-      display:block;
-      width: 100%;
-      height: 50%;
-    }
-
-  .container #editor {
-    .source {
-      width: 50%;
-      height: 100%;
-      display: inline-block;
-    }
-  }
+@media (min-width: @breakLg) {
+  .source:last-child { .divider(top); }
+  #preview { .divider(left); }
 }
 
-@media (min-width: 1000px) {
-  .container #editor {
-    width: 40%;
-  }
-  .container #preview {
-    width: 60%;
-  }
+@media (max-width: @breakLg) {
+  #editor { width: 40%; }
+  #preview { width: 60%; }
+  .source:last-child { .divider(top); }
+  #preview { .divider(left); }
 }
+
+@media (max-width: @breakMd) {
+  #editor, #preview {
+    width: 100%;
+    height: 50%;
+  }
+  .source {
+    width: 50%;
+    height: 100%;
+    &:last-child { .divider(left); }
+  }
+
+  #preview { .divider(top); }
+}
+
+@media (max-width: @breakSm) {
+  .source {
+    width: 100%;
+    height: 50%;
+    &:last-child { .divider(top); }
+  }
+  #preview { .divider(top); }
+}
+

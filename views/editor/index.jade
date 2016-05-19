@@ -11,7 +11,6 @@ html
     - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
 
     body
-
       #modal
         .backdrop
         .content
@@ -33,11 +32,11 @@ html
           .source
             .toggle.icon-screen-full
             .toggle.icon-screen-normal
-            textarea.CSS#css(name="files[CSS][content]")= cssFile.content
+            textarea.CSS#css= cssFile.content
           .source
             .toggle.icon-screen-full
             .toggle.icon-screen-normal
-            textarea.HTML#html(name="files[HTML][content]")= htmlFile.content
+            textarea.HTML#html= htmlFile.content
 
         #preview
           //- sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts",
