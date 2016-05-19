@@ -20,10 +20,14 @@
 
   function showModal() {
     $('body').addClass('modal-open');
+    $('#modal .content').anCss('bounceInUp');
+    $('#modal .backdrop').anCss('fadeIn');
   }
 
   function hideModal() {
-    $('body').removeClass('modal-open');
+    $('#modal .content').anCss('bounceOutUp').anDone(function () {
+      $('body').removeClass('modal-open');
+    });
   }
 
 }());

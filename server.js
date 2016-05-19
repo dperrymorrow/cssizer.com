@@ -13,6 +13,7 @@ var express = require('express');
   GITHUB_CLIENT_SECRET = process.env.CSSIZER_CLIENT_SECRET,
   CSSIZER_SESSION = process.env.CSSIZER_SESSION;
 
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -38,6 +39,7 @@ app.locals._ = require("underscore");
 // configure Express
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+
 app.use('/less-css', expressLess(__dirname + '/less', { debug: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

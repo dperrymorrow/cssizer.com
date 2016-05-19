@@ -27,6 +27,10 @@
         mode:'css'
       }, this.settings);
 
+      $('.toggle').click(function () {
+        $(this).parent().toggleClass('fullscreen');
+      });
+
       this.cssEditor = CodeMirror.fromTextArea($('#css').get(0), cssSettings);
 
       var htmlSettings = _.defaults({

@@ -1,19 +1,23 @@
-@import 'theme.less';
+@import 'theme';
+@import 'mixins';
+@import 'variables';
+@import 'forms';
+@import 'modal';
+@import "https://fonts.googleapis.com/css?family=Crete+Round";
 
 html, body {
   height: 100%;
+  font-family: @fontDisplay;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow:hidden;
-
-  &.modal-open {
-    #modal {
-      display: flex;
-    }
-  }
 }
 
 header {
@@ -24,10 +28,10 @@ header {
 }
 
 .container {
+  .trans();
   display: block;
   height: 100%;
   width: 100%;
-  // padding-top: 50px;
   box-sizing: border-box;
   margin: 0;
 
@@ -49,10 +53,39 @@ header {
 
     .source {
       height: 50%;
+      width: 100%;
       position: relative;
 
+      &.fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+
+        .toggle {
+          .icon-screen-normal { display: inline-block; }
+          .icon-screen-full { display: none; }
+        }
+      }
+
+      .toggle {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: @blue;
+        font-size: 21px;
+        z-index: 3;
+        cursor: pointer;
+
+        &.icon-screen-normal {
+          display: none;
+        }
+      }
+
       &:last-child {
-        border-top: 10px solid #333;
+        // border-top: 10px solid #333;
       }
     }
   }
@@ -64,34 +97,6 @@ header {
   left: 0;
   height: 100%;
   width: 100%;
-  box-sizing: border-box;
-}
-
-#modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  z-index: 3;
-    align-items: center;
-  justify-content: center;
-
-  .backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,.5);
-  }
-
-  .content {
-    z-index: 1;
-    max-width: 50%;
-  }
 }
 
 @media (max-width: 750px) {

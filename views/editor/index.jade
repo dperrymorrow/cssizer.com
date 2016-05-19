@@ -3,6 +3,7 @@ doctype html
 html
   head
     link(rel="stylesheet" href="/css/vendor.min.css" type="text/css" media="screen" charset="utf-8")
+    link(rel="stylesheet" href="/icomoon/style.css" type="text/css" media="screen" charset="utf-8")
     link(rel="stylesheet" href="/less-css/app.css" type="text/css" media="screen" charset="utf-8")
 
     //- might should do this on the server
@@ -10,16 +11,13 @@ html
     - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
 
     body
-      header
-        #user-info
-        button#save-trigger Save
 
       #modal
         .backdrop
         .content
           form#save-form(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
             input(type="hidden", name="files[CSS][filename]", value=cssFile.filename)
-            textarea(type="text", name="description", value=gist.description, placeholder="description")
+            textarea(rows=10, name="description", placeholder="Description")=gist.description
             input(type="hidden", name="files[HTML][filename]", value=htmlFile.filename)
             input(type="hidden", name="id", value=gist.id)
             input(type="hidden", name="files[CSS][content]")= cssFile.content
@@ -27,10 +25,18 @@ html
             button(type="submit") Save
 
       .container
+        header
+          #user-info
+          button#save-trigger Save
+
         #editor
           .source
+            .toggle.icon-screen-full
+            .toggle.icon-screen-normal
             textarea.CSS#css(name="files[CSS][content]")= cssFile.content
           .source
+            .toggle.icon-screen-full
+            .toggle.icon-screen-normal
             textarea.HTML#html(name="files[HTML][content]")= htmlFile.content
 
         #preview
@@ -38,6 +44,7 @@ html
           iframe#iframe(sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts", width="100%" height="100%" src="/iframe.html" frameborder="no")
 
       script(src="/js/vendor.min.js")
+      script(src="/js/utils.js")
       script(src="/js/editor.js")
       script(src="/js/preview.js")
       script(src="/js/form.js")

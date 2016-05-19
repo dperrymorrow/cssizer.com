@@ -1,0 +1,39 @@
+@import "variables";
+@import "mixins";
+
+form {
+  *:focus {
+    outline:0;
+  }
+
+  textarea {
+    background-color: lighten(@bgBlue, 3%);
+    border: none;
+    display: block;
+    width: 100%;
+    color: @purple;
+    padding: @padding;
+
+    &:focus {
+      background-color: lighten(@bgBlue, 5%);
+    }
+  }
+
+
+  button {
+    display: block;
+    background-color: darken(@purple, 40%);
+    padding: @padding;
+    color: darken(@purple, 20%);
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    text-transform: uppercase;
+    border: 1px solid darken(@purple, 50%);
+
+    &:hover {
+      background-color: darken(@purple, 38%);
+    }
+
+  }
+}
