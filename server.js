@@ -114,7 +114,7 @@ function ensureAuthenticated(req, res, next) {
     gists.user = req.user;
     return next();
   }
-  res.redirect('/login')
+  res.redirect('/login');
 }
 
 app.listen(3000);

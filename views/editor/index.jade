@@ -23,12 +23,12 @@ html
             input(type="hidden", name="files[HTML][content]")= htmlFile.content
             button(type="submit") Save
 
-      .container
-        header
-          #user-info
-          button#save-trigger Save
+      header
+        #user-info
+        button#save-trigger Save
 
-        #editor
+      article
+        .editor
           .source
             .toggle.icon-screen-full
             .toggle.icon-screen-normal
@@ -38,7 +38,7 @@ html
             .toggle.icon-screen-normal
             textarea.HTML#html= htmlFile.content
 
-        #preview
+        .preview
           //- sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts",
           iframe#iframe(sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts", width="100%" height="100%" src="/iframe.html" frameborder="no")
 
@@ -48,6 +48,6 @@ html
       script(src="/js/preview.js")
       script(src="/js/form.js")
       script.
-        CSSIZER.preview.init();
-        CSSIZER.editor.init();
-        CSSIZER.form.init();
+        //- CSSIZER.preview.init();
+        //- CSSIZER.editor.init();
+        //- CSSIZER.form.init();

@@ -1,7 +1,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css");
 
 body {
-	padding: 50px;
+  padding: 50px;
   background-color: #333;
   color: #ccc;
 }
