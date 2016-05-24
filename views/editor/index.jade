@@ -2,6 +2,7 @@
 doctype html
 html
   head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel="stylesheet" href="/css/vendor.min.css" type="text/css" media="screen" charset="utf-8")
     link(rel="stylesheet" href="/icomoon/style.css" type="text/css" media="screen" charset="utf-8")
     link(rel="stylesheet" href="/less-css/app.css" type="text/css" media="screen" charset="utf-8")
@@ -11,7 +12,7 @@ html
     - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
 
     body
-      #modal
+      .modal.save-modal
         .backdrop
         .content
           form#save-form(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
@@ -23,11 +24,11 @@ html
             input(type="hidden", name="files[HTML][content]")= htmlFile.content
             button(type="submit") Save
 
-      header
-        #user-info
-        button#save-trigger Save
 
       article
+        header
+          #user-info
+          button.btn#save-trigger Save
         .editor
           .source
             .toggle.icon-screen-full
@@ -48,6 +49,6 @@ html
       script(src="/js/preview.js")
       script(src="/js/form.js")
       script.
-        //- CSSIZER.preview.init();
-        //- CSSIZER.editor.init();
-        //- CSSIZER.form.init();
+        CSSIZER.preview.init();
+        CSSIZER.editor.init();
+        CSSIZER.form.init();

@@ -5,7 +5,7 @@
 
   CSSIZER.form = {
     $form: $('#save-form'),
-    $modal: $('#modal'),
+    $modal: $('.modal.save-modal'),
 
     init: function () {
       $('#save-trigger').click(showModal);
@@ -20,12 +20,12 @@
 
   function showModal() {
     $('body').addClass('modal-open');
-    $('#modal .content').anCss('bounceInUp');
-    $('#modal .backdrop').anCss('fadeIn');
+    CSSIZER.form.$modal.find('.content').anCss('bounceInUp');
+    CSSIZER.form.$modal.find('.backdrop').anCss('fadeIn');
   }
 
   function hideModal() {
-    $('#modal .content').anCss('bounceOutDown').anDone(function () {
+    CSSIZER.form.$modal.find('.content').anCss('bounceOutDown').anDone(function () {
       $('body').removeClass('modal-open');
     });
   }

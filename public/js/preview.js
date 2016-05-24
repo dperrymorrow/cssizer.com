@@ -5,7 +5,7 @@
 
   CSSIZER.preview = {
 
-    $iframe: $("#preview iframe"),
+    $iframe: $(".preview iframe"),
 
     init: function () {
       this.$htmlTarget = this.$iframe.contents().find('#html-target');
