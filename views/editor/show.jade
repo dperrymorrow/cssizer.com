@@ -9,11 +9,8 @@ html
     - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
 
     include ./save_modal.jade
+    include ../gists/gists_modal.jade
 
-    .modal#lib-modal
-      .backdrop
-      .content
-        this is your library of gists
 
     article
       header

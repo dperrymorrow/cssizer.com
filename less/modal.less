@@ -1,4 +1,7 @@
 
+@modalBorderWidth: 5px;
+@modalBorderColor: darken(@bgBlue, 2%);
+
 body.modal-open {
   article, header {
     -webkit-filter: blur(2px);
@@ -21,16 +24,37 @@ body.modal-open {
     .flex-display();
   }
 
+  .loading {
+    text-align: center;
+    padding: @padding;
+
+    i {
+      display: inline-block;
+      font-size: 50px;
+      animation-name: spin;
+      animation-duration: 400ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform:rotate(0deg);
+    }
+    to {
+      transform:rotate(360deg);
+    }
+  }
+
   .close {
     .trans(all, 0.2s, ease-out);
-
-    position: absolute;
-    top: -@padding/2;
-    right: -@padding/2;
-    background-color: @darkBlue;
-    box-shadow: 0px 0px 4px 2px darken(@bgBlue, 30%);
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 5;
+    background-color: @modalBorderColor;
     text-align: center;
-    border-radius: @padding;
     width: @padding*2;
     height: @padding*2;
     color: @textColor;
@@ -60,15 +84,12 @@ body.modal-open {
   }
 
   .content {
+    .align-self(center);
+    height: auto;
     position: relative;
     border-radius: @borderRadius;
-
-    h2 {
-      margin: @padding/2 0;
-    }
-    .align-self(center);
     animation-duration: 0.2s;
-    border: 5px solid darken(@darkBlue, 2%);
+    border: @modalBorderWidth solid @modalBorderColor;
     border-radius: @borderRadius;
     background-color: @bgBlue;
     width: 500px;
@@ -76,8 +97,11 @@ body.modal-open {
     margin-top: 0;
     z-index: 1;
     max-width: 90%;
+    max-height: 90%;
+      overflow-y: auto;
 
     .well {
+      height: 100%;
       background-color: lighten(@lightBlue, 2%);
       padding: @padding;
     }

@@ -1,10 +1,12 @@
 
-.well
-  h1 Your Gists
-  p Below are all your Gists that have an HTML and a CSS document.
-  a.btn.btn-block(href="/editor/new") Create new
-  ul
-    - each gist in gists
-      li
-        a(href= "/editor/#{gist.id}/edit")
-          = gist.description || Object.keys(gist.files)[0]
+h1 Your Gists
+p Below are all your Gists that have an HTML and a CSS document.
+a.btn.btn-block(href="/editor/new")
+  i.icon-diff-added
+  = "Create New Gist"
+ul
+  - each gist in gists
+    li
+      a(href= "/editor/#{gist.id}/edit")
+        i.icon-mark-github
+        = gist.description || Object.keys(gist.files)[0]

@@ -21,7 +21,7 @@ a.btn, button.btn {
   padding: @padding/2;
   background-color: @darkPurple;
   color: @purple;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   border: 1px solid darken(@purple, 50%);
   text-decoration: none;
 
@@ -30,8 +30,13 @@ a.btn, button.btn {
     width: 100%;
   }
 
-  .icon {
-    margin-right: @padding/2;
+  &:disabled {
+    background-color: darken(@darkPurple, 10%);
+    color: darken(@purple, 10%);
+  }
+
+  i {
+    margin-right: @padding/3;
   }
 
   &:hover {

@@ -1,11 +1,11 @@
 .modal#save-modal
+  .close
+    i.icon-x
   .backdrop
   .content
-    .close
-      i.icon-x
     .well
       h1 Save to Github
-      form#save-form(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
+      form#save-form.prevent-double(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
         input(type="hidden", name="files[CSS][filename]", value=cssFile.filename)
         textarea(rows=5, name="description", placeholder="Description")=gist.description
         input(type="hidden", name="files[HTML][filename]", value=htmlFile.filename)

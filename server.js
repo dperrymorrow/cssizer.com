@@ -61,14 +61,14 @@ app.get('/', function (req, res) {
 
 // begin working on a new gist
 app.get('/editor/new', ensureAuthenticated, function(req, res){
-  res.render('editor/show', { user: req.user, gists: [], gist: gists.new() });
+  res.render('editor/show', { user: req.user, gist: gists.new() });
 });
 
 // edit an existing gist
-app.get('/editor/:id/edit', ensureAuthenticated, function (req, res) {
+app.get('/editor/:id/edit', function (req, res) {
   gists.find(req.params.id).then(function (gist) {
     if (!gist) res.render('notFound');
-    res.render('editor/show', {gist: gist, gists: gists, user: req.user});
+    res.render('editor/show', {gist: gist, user: req.user});
   });
 });
 
@@ -95,7 +95,8 @@ app.get('/gists/index', ensureAuthenticated, function (req, res) {
 
 // authorization
 app.get('/login', function (req, res) {
-  res.render('auth/new', { user: req.user });
+  var template = req.xhr ? 'auth/login_form' : 'auth/new';
+  res.render(template, { user: req.user });
 });
 
 app.get('/logout', function(req, res){

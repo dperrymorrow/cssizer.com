@@ -21,6 +21,10 @@ html, body {
   }
 }
 
+i {
+  font-size: 85%;
+}
+
 h1, h2 {
   color: @headerColor;
   border-bottom: 1px solid @headerColor;
@@ -144,6 +148,27 @@ article {
       height: 50%;
       .divider(top);
     }
+  }
+
+  .modal .content {
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  header {
+    nav {
+      a, button {
+        padding: 0 @padding/2;
+      }
+    }
+    .user {
+      span {
+        display: none;
+      }
+    }
+  }
+  .cm-s-cssizer.CodeMirror {
+    padding: @padding/2;
   }
  }
 
