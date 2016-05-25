@@ -1,9 +1,5 @@
 
 form {
-  *:focus {
-    outline:0;
-  }
-
   textarea {
     background-color: lighten(@bgBlue, 3%);
     border: none;
@@ -16,15 +12,14 @@ form {
       background-color: lighten(@bgBlue, 5%);
     }
   }
-
-  a.btn, button {
-    font-size: 20px;
-    padding: @padding;
-  }
 }
 
-a.btn, button {
-  background-color: darken(@purple, 40%);
+a.btn, button.btn {
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  padding: @padding/2;
+  background-color: @darkPurple;
   color: darken(@purple, 20%);
   border: none;
   text-transform: uppercase;

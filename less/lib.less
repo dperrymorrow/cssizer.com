@@ -8,23 +8,23 @@
     ul {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: @padding 0 0 0;
 
       li {
         &:nth-child(odd) {
-          background-color: darken(@bgBlue, 2%);
+          background-color: @lightBlue;
         }
 
         a {
-          .trans(all, 0.3s, ease-out);
-          .link;
-          padding: @padding/2;
-          // color: @orange;
+          .trans(all, 0.2s, ease-out);
+          padding: @padding/2 @padding;
           display: block;
           text-decoration: none;
+          color: @purple;
+
           &:hover {
-            background-color: @purple;
-            color: @bgBlue;
+            background-color: @darkPurple;
+            color: @purple;
           }
         }
       }

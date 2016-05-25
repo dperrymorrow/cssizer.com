@@ -2,9 +2,10 @@ header {
   .flex-display();
   .flex-flow(row wrap);
   .justify-content(space-between);
+  .divider(bottom);
 
   height: @headerHeight;
-  background-color: silver;
+  background-color: @darkBlue;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,13 +13,25 @@ header {
   z-index: @headerZ;
 
   nav {
-    a {
+    a, button {
+      .trans(all, 0.3s, ease-out);
+      border: none;
+      font-family: @fontDisplay;
+      text-decoration: none;
       height: @headerHeight;
+      line-height: @headerHeight;
       display: inline-block;
       float: left;
-      font-size: 14px;
-      padding: @padding/2 @padding;
-      background-color: @bgBlue;
+      font-size: 13px;
+      padding: 0 @padding;
+      background-color: inherit;
+      color: @blue;
+      text-transform: uppercase;
+
+      &:hover {
+        background-color: @bgBlue;
+        color: @yellow;
+      }
     }
   }
 
@@ -29,11 +42,12 @@ header {
     span {
       line-height: @headerHeight;
       display: inline-block;
+      color: @red;
     }
 
     img {
       margin-left: @padding;
-      height: 50px;
+      height: @headerHeight;
       width: auto;
     }
   }

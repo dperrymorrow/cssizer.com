@@ -33,9 +33,13 @@ body.modal-open {
   }
 
   .content {
+
+    h2 {
+      margin: @padding/2 0;
+    }
     .align-self(center);
     animation-duration: 0.2s;
-    border: 5px solid darken(@bgBlue, 5%);
+    border: 5px solid darken(@darkBlue, 2%);
     border-radius: @borderRadius;
     background-color: @bgBlue;
     width: 500px;
@@ -43,5 +47,10 @@ body.modal-open {
     margin-top: 0;
     z-index: 1;
     max-width: 90%;
+
+    .well {
+      background-color: lighten(@lightBlue, 2%);
+      padding: @padding;
+    }
   }
 }

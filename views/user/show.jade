@@ -1,11 +1,10 @@
 
-
-h2 Your Gists
-
-ul
-  li
-    a(href="/editor/new") Create new
-  - each gist in gists
-    li
-      a(href= "/editor/#{gist.id}/edit")
-        = gist.description || Object.keys(gist.files)[0]
+.well
+  h2 Your Gists
+  p Below are all your Gists that have an HTML and a CSS document.
+  a.btn.btn-block(href="/editor/new") Create new
+  ul
+    - each gist in gists
+      li
+        a(href= "/editor/#{gist.id}/edit")
+          = gist.description || Object.keys(gist.files)[0]
