@@ -1,0 +1,40 @@
+header {
+  .flex-display();
+  .flex-flow(row wrap);
+  .justify-content(space-between);
+
+  height: @headerHeight;
+  background-color: silver;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: @headerZ;
+
+  nav {
+    a {
+      height: @headerHeight;
+      display: inline-block;
+      float: left;
+      font-size: 14px;
+      padding: @padding/2 @padding;
+      background-color: @bgBlue;
+    }
+  }
+
+  .user {
+    .flex-display();
+    .flex-flow(row wrap);
+
+    span {
+      line-height: @headerHeight;
+      display: inline-block;
+    }
+
+    img {
+      margin-left: @padding;
+      height: 50px;
+      width: auto;
+    }
+  }
+}

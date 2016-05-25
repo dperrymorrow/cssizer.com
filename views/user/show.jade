@@ -1,13 +1,11 @@
 
-h2= user.username
-img(src=user._json.avatar_url, style="max-height:100px;")
-a(href = "/logout") logout
-hr
-label css gists
-  ul
+
+h2 Your Gists
+
+ul
+  li
+    a(href="/editor/new") Create new
+  - each gist in gists
     li
-      a(href="/editor/new") Create new
-    - each gist in gists
-      li
-        a(href= "/editor/#{gist.id}/edit")
-          = gist.description || Object.keys(gist.files)[0]
+      a(href= "/editor/#{gist.id}/edit")
+        = gist.description || Object.keys(gist.files)[0]

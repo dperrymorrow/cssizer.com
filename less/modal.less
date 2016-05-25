@@ -3,10 +3,6 @@ body.modal-open {
   article, header {
     -webkit-filter: blur(2px);
   }
-
-  .modal {
-    .flex-display();
-  }
 }
 
 .modal {
@@ -20,6 +16,10 @@ body.modal-open {
   height: 100%;
   display: none;
   z-index: 3;
+
+  &.active  {
+    .flex-display();
+  }
 
   .backdrop {
     animation-duration: 0.5s;

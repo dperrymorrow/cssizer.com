@@ -17,21 +17,27 @@ form {
     }
   }
 
-
   a.btn, button {
-    display: block;
-    background-color: darken(@purple, 40%);
-    padding: @padding;
-    color: darken(@purple, 20%);
-    width: 100%;
-    border: none;
     font-size: 20px;
-    text-transform: uppercase;
-    border: 1px solid darken(@purple, 50%);
-
-    &:hover {
-      background-color: darken(@purple, 38%);
-    }
-
+    padding: @padding;
   }
+}
+
+a.btn, button {
+  background-color: darken(@purple, 40%);
+  color: darken(@purple, 20%);
+  border: none;
+  text-transform: uppercase;
+  border: 1px solid darken(@purple, 50%);
+  text-decoration: none;
+
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: darken(@purple, 38%);
+  }
+
 }

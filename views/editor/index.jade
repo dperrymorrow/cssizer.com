@@ -12,7 +12,7 @@ html
     - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
 
     body
-      .modal.save-modal
+      .modal#save-modal
         .backdrop
         .content
           form#save-form(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
@@ -22,13 +22,26 @@ html
             input(type="hidden", name="id", value=gist.id)
             input(type="hidden", name="files[CSS][content]")= cssFile.content
             input(type="hidden", name="files[HTML][content]")= htmlFile.content
-            button(type="submit") Save
+            button.btn.btn-block(type="submit") Save
 
+      .modal#lib-modal
+        .backdrop
+        .content
+          this is your library of gists
 
       article
         header
-          #user-info
-          button.btn#save-trigger Save
+          nav
+            button#save-trigger Save
+            button#lib-trigger Your gists
+            a(href="/logout") logout
+
+          if user
+            .user
+              span
+                = user.username
+              img(src=user._json.avatar_url)
+
         .editor
           .source
             .toggle.icon-screen-full
@@ -40,15 +53,18 @@ html
             textarea.HTML#html= htmlFile.content
 
         .preview
+          .toggle.icon-screen-full
+          .toggle.icon-screen-normal
           //- sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts",
           iframe#iframe(sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts", width="100%" height="100%" src="/iframe.html" frameborder="no")
 
       script(src="/js/vendor.min.js")
+      script(src="/js/app.js")
       script(src="/js/utils.js")
+      script(src="/js/lib.js")
       script(src="/js/editor.js")
       script(src="/js/preview.js")
       script(src="/js/form.js")
+
       script.
-        CSSIZER.preview.init();
-        CSSIZER.editor.init();
-        CSSIZER.form.init();
+        CSSIZER.app.init();

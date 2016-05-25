@@ -2,13 +2,14 @@
 
 .cm-s-cssizer.CodeMirror {
   font-family: Monaco;
-  background: rgba(17, 36, 45, 0.85);
+  background: @bgTrans;
   color: #CCCCCC;
   font-size: 13px;
   padding: 10px;
 }
 .cm-s-cssizer div.CodeMirror-selected {
-  background: #2D2D2D;
+  background: lighten(@bgBlue, 15%);
+  border: 1px solid @orange;
 }
 .cm-s-cssizer .CodeMirror-line::selection,
 .cm-s-cssizer .CodeMirror-line > span::selection,
@@ -33,7 +34,7 @@
   color: #515151;
 }
 .cm-s-cssizer .CodeMirror-cursor {
-  border-left: 1px solid #6A6A6A;
+  border-left: 3px solid @orange;
 }
 .cm-s-cssizer span.cm-comment {
   color: #d27b53;

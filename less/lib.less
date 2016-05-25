@@ -1,0 +1,33 @@
+#lib-modal {
+
+  .content {
+    max-height: 90%;
+    overflow-y: auto;
+    // background-color: lighten(@bgBlue, 10%);
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        &:nth-child(odd) {
+          background-color: darken(@bgBlue, 2%);
+        }
+
+        a {
+          .trans(all, 0.3s, ease-out);
+          .link;
+          padding: @padding/2;
+          // color: @orange;
+          display: block;
+          text-decoration: none;
+          &:hover {
+            background-color: @purple;
+            color: @bgBlue;
+          }
+        }
+      }
+    }
+  }
+}
