@@ -21,6 +21,33 @@ body.modal-open {
     .flex-display();
   }
 
+  .close {
+    .trans(all, 0.2s, ease-out);
+
+    position: absolute;
+    top: -@padding/2;
+    right: -@padding/2;
+    background-color: @darkBlue;
+    box-shadow: 0px 0px 4px 2px darken(@bgBlue, 30%);
+    text-align: center;
+    border-radius: @padding;
+    width: @padding*2;
+    height: @padding*2;
+    color: @textColor;
+    cursor: pointer;
+
+    &:hover {
+      color: @yellow;
+      background-color: @bgBlue;
+    }
+
+    i {
+      line-height: @padding*2;
+      display: inline-block;
+      font-size: @padding;
+    }
+  }
+
   .backdrop {
     animation-duration: 0.5s;
     position: absolute;
@@ -33,6 +60,8 @@ body.modal-open {
   }
 
   .content {
+    position: relative;
+    border-radius: @borderRadius;
 
     h2 {
       margin: @padding/2 0;

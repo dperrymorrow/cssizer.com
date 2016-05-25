@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?h8njrc');
-    src:    url('fonts/icomoon.eot?h8njrc#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?h8njrc') format('truetype'),
-        url('fonts/icomoon.woff?h8njrc') format('woff'),
-        url('fonts/icomoon.svg?h8njrc#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?h1i50f');
+    src:    url('fonts/icomoon.eot?h1i50f#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?h1i50f') format('truetype'),
+        url('fonts/icomoon.woff?h1i50f') format('woff'),
+        url('fonts/icomoon.svg?h1i50f#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,11 +24,26 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-logo-github:before {
-    content: "\f092";
+.icon-code:before {
+    content: "\f05f";
+}
+.icon-comment:before {
+    content: "\f02b";
+}
+.icon-comment-discussion:before {
+    content: "\f04f";
+}
+.icon-diff-added:before {
+    content: "\f06b";
 }
 .icon-mark-github:before {
     content: "\f00a";
+}
+.icon-markdown:before {
+    content: "\f0c9";
+}
+.icon-repo-forked:before {
+    content: "\f002";
 }
 .icon-screen-full:before {
     content: "\f066";
@@ -36,10 +51,10 @@
 .icon-screen-normal:before {
     content: "\f067";
 }
-.icon-spinner3:before {
-    content: "\e900";
+.icon-star:before {
+    content: "\f02a";
 }
-.icon-enlarge:before {
-    content: "\e901";
+.icon-x:before {
+    content: "\f081";
 }
 

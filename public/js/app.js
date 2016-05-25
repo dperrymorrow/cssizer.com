@@ -15,17 +15,24 @@
     showModal: function ($modal) {
       $('body').addClass('modal-open');
       $modal.addClass('active').find('.content').anCss('bounceInUp');
-      $modal.find('.backdrop').anCss('fadeIn').click($.proxy(this, 'hideModal'));
+
+      $modal.find('.backdrop').anCss('fadeIn').click(function () {
+        hideModal($modal);
+      });
+
+      $modal.find('.close').click(function () {
+        hideModal($modal);
+      });
     },
 
-    hideModal: function (event) {
-      var $modal = $(event.currentTarget).parent();
-      $modal.find('.content').anCss('bounceOutDown').anDone(function () {
-        $('body').removeClass('modal-open');
-        $modal.removeClass('active');
-      });
-    }
   };
+
+  function hideModal ($modal) {
+    $modal.find('.content').anCss('bounceOutDown').anDone(function () {
+      $('body').removeClass('modal-open');
+      $modal.removeClass('active');
+    });
+  }
 
   function toggle() {
     $('.toggle').click(function () {

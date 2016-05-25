@@ -13,7 +13,7 @@
 
     loadModal: function () {
       CSSIZER.app.showModal(this.$modal);
-      this.$ajaxTarget.load('/user/show');
+      this.$ajaxTarget.load('/gists/index');
     }
   };
 

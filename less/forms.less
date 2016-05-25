@@ -1,27 +1,26 @@
 
 form {
-  textarea {
-    background-color: lighten(@bgBlue, 3%);
+  textarea, input[type=text] {
+    background-color: lighten(@bgBlue, 10%);
     border: none;
     display: block;
     width: 100%;
-    color: @purple;
+    border: 1px solid @bgBlue;
     padding: @padding;
 
     &:focus {
-      background-color: lighten(@bgBlue, 5%);
+      background-color: lighten(@bgBlue, 15%);
     }
   }
 }
 
 a.btn, button.btn {
-  text-align: center;
   display: inline-block;
-  font-size: 16px;
+  text-align: center;
+  font-size: 21px;
   padding: @padding/2;
   background-color: @darkPurple;
-  color: darken(@purple, 20%);
-  border: none;
+  color: @purple;
   text-transform: uppercase;
   border: 1px solid darken(@purple, 50%);
   text-decoration: none;
@@ -29,6 +28,10 @@ a.btn, button.btn {
   &.btn-block {
     display: block;
     width: 100%;
+  }
+
+  .icon {
+    margin-right: @padding/2;
   }
 
   &:hover {

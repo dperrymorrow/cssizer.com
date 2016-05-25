@@ -59,40 +59,43 @@ app.get('/', function (req, res) {
   res.redirect(redir);
 });
 
-// editor
+// begin working on a new gist
 app.get('/editor/new', ensureAuthenticated, function(req, res){
-  res.render('editor/index', { user: req.user, gists: [], gist: gists.new() });
+  res.render('editor/show', { user: req.user, gists: [], gist: gists.new() });
 });
 
+// edit an existing gist
 app.get('/editor/:id/edit', ensureAuthenticated, function (req, res) {
   gists.find(req.params.id).then(function (gist) {
     if (!gist) res.render('notFound');
-    res.render('editor/index', {gist: gist, gists: gists, user: req.user});
+    res.render('editor/show', {gist: gist, gists: gists, user: req.user});
   });
 });
 
+// save changes to existing gist
 app.post('/editor/:id/update', ensureAuthenticated, function (req, res) {
   gists.update(req.body).then(function (gist) {
     res.redirect('/editor/' + req.body.id + '/edit');
   });
 });
 
+// create a new gist
 app.post('/editor/create', ensureAuthenticated, function(req, res){
   gists.create(req.body).then(function (gist) {
     res.redirect('/editor/' + gist.id + "/edit");
   });
 });
 
-// user info
-app.get('/user/show', ensureAuthenticated, function (req, res) {
+// get all user's gists
+app.get('/gists/index', ensureAuthenticated, function (req, res) {
   gists.all().then(function (gists) {
-    res.render('user/show', {user: req.user, gists: gists});
+    res.render('gists/index', {user: req.user, gists: gists});
   });
 });
 
 // authorization
 app.get('/login', function (req, res) {
-  res.render('login', { user: req.user });
+  res.render('auth/new', { user: req.user });
 });
 
 app.get('/logout', function(req, res){
