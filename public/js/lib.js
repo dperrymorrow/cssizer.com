@@ -12,7 +12,7 @@
 
     loadModal: function () {
       CSSIZER.app.showModal(this.$modal)
-        .loadModal(this.$modal, '/gists/index');
+        .loadModal(this.$modal, '/gist/index');
     }
   };
 

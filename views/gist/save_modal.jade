@@ -5,7 +5,18 @@
   .content
     .well
       h1 Save to Github
-      form#save-form.prevent-double(method="post", action= gist.id ? "/editor/#{gist.id}/update" : "/editor/create")
+
+      if user
+
+        if user.id == gist.owner.id
+          span we own this
+        else
+          span we dont own this
+
+      else
+        span there is no user
+
+      form#save-form.prevent-double(method="post", action= gist.id ? "/gist/#{gist.id}/update" : "/gist/create")
         input(type="hidden", name="files[CSS][filename]", value=cssFile.filename)
         textarea(rows=5, name="description", placeholder="Description")=gist.description
         input(type="hidden", name="files[HTML][filename]", value=htmlFile.filename)

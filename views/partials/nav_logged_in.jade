@@ -1,0 +1,9 @@
+nav
+  button#save-trigger Save
+  button#lib-trigger Your gists
+  a(href="/logout") logout
+
+.user
+  span
+    = user.username
+  img(src=user._json.avatar_url)

@@ -25,10 +25,14 @@ header {
       display: inline-block;
       float: left;
       font-size: 13px;
-      padding: 0 @padding;
+      padding: 0 @padding/2 0 @padding;
       background-color: inherit;
       color: @blue;
       text-transform: uppercase;
+
+      i {
+        margin-right: 5px;
+      }
 
       &:hover {
         background-color: @bgBlue;

@@ -9,21 +9,14 @@ html
     - htmlFile = _.findWhere(gist.files, {language: 'HTML'});
 
     include ./save_modal.jade
-    include ../gists/gists_modal.jade
-
+    include ./gists_modal.jade
 
     article
       header
-        nav
-          button#save-trigger Save
-          button#lib-trigger Your gists
-          a(href="/logout") logout
-
         if user
-          .user
-            span
-              = user.username
-            img(src=user._json.avatar_url)
+          include ../partials/nav_logged_in.jade
+        else
+          include ../partials/nav_logged_out.jade
 
       .editor
         .source
