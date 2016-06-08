@@ -1,19 +1,22 @@
 "use strict";
 
-var express = require('express'),
-  passport = require('passport'),
-  session = require('express-session'),
-  expressLess = require('express-less'),
-  bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
-  GitHubStrategy = require('passport-github2').Strategy,
-  partials = require('express-partials'),
-  gists = require('./lib/gists'),
-  MongoStore = require('express-session-mongo');
+const express = require('express');
+const passport = require('passport');
+const session = require('express-session');
+const expressLess = require('express-less');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+const GitHubStrategy = require('passport-github2').Strategy;
+const partials = require('express-partials');
+// const gists = require('./lib/gists');
+const MongoStore = require('express-session-mongo');
 
 const GITHUB_CLIENT_ID = process.env.CSSIZER_CLIENT_ID;
 const GITHUB_CLIENT_SECRET = process.env.CSSIZER_CLIENT_SECRET;
 const CSSIZER_SESSION = process.env.CSSIZER_SESSION;
+
+const AuthController = require('./controllers/auth_controller');
+const GistsController = require('./controllers/gists_controller');
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
@@ -32,7 +35,7 @@ passport.use(
   )
 );
 
-var app = express();
+const app = express();
 app.locals._ = require("underscore");
 
 // configure Express
@@ -54,10 +57,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(`${__dirname}/public`));
 
-// app setup, fire up controllers
-var AuthController = require('./controllers/auth_controller').controller(app);
-var GistsController = require('./controllers/gists_controller').controller(app);
+const auth = new AuthController(app);
+const gists = new GistsController(app);
 
+// root path
 app.get('/', (req, res) => {
   let redir = req.isAuthenticated() ? '/gist/new' : '/login';
   res.redirect(redir);

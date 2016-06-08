@@ -1,43 +1,46 @@
 "use strict";
-var gists = require('./../lib/gists');
-var ensureAuthenticated = require('./auth_controller').ensureAuthenticated;
+const gists = require('./../lib/gists');
+const AuthController = require('./auth_controller');
 
-module.exports.controller = function (app) {
+module.exports = class {
 
-  // begin working on a new gist
-  app.get('/gist/new', ensureAuthenticated, (req, res) => {
-    gists.new().then(
-      gist => res.render('gist/show', { gist: gist, user: req.user })
+  constructor(app) {
+    app.get('/gist/new', AuthController.ensureAuthenticated, this._new);
+    app.get('/gist/index', AuthController.ensureAuthenticated, this.index);
+    app.get('/gist/:id/edit', this.edit);
+    app.post('/gist/:id/update', AuthController.ensureAuthenticated, this.update)
+    app.post('/gist/create', AuthController.ensureAuthenticated, this.create);
+  }
+
+  index(req, res) {
+    gists.all().then(
+      gists => res.render('gist/index', {user: req.user, gists: gists})
     );
-  });
+  }
 
-  // edit an existing gist
-  // !! the only route that does not need to be authenticated
-  app.get('/gist/:id/edit', function (req, res) {
+  create(req, res) {
+    gists.create(req.body).then(
+      gist => res.redirect(`/gist/${gist.id}/edit`)
+    );
+  }
+
+  update(req, res) {
+    gists.update(req.body).then(
+      gist => res.redirect(`/gist/${req.body.id}/edit`)
+    );
+  }
+
+  edit(req, res) {
     gists.find(req.params.id).then(gist => {
       if (!gist) res.render('notFound');
       res.render('gist/show', {gist: gist, user: req.user});
     });
-  });
+  }
 
-  // save changes to existing gist
-  app.post('/gist/:id/update', ensureAuthenticated, (req, res) => {
-    gists.update(req.body).then(
-      gist => res.redirect(`/gist/${req.body.id}/edit`)
+  _new(req, res){
+    gists.new().then(
+      gist => res.render('gist/show', { gist: gist, user: req.user })
     );
-  });
+  }
 
-  // create a new gist
-  app.post('/gist/create', ensureAuthenticated, (req, res) => {
-    gists.create(req.body).then(
-      gist => res.redirect(`/gist/${gist.id}/edit`)
-    );
-  });
-
-  // get all user's gists
-  app.get('/gist/index', ensureAuthenticated, (req, res) => {
-    gists.all().then(
-      gists => res.render('gist/index', {user: req.user, gists: gists})
-    );
-  });
 };
